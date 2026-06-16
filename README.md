@@ -10,8 +10,8 @@ Let's start developing right away without any complicated setup!
 ## Table of contents
 - [Quick Start](#quick-start)
 - [What is this?](#what-is-this)
-- [How to create project?](./docs/how-to-create-project/index.md)
-- [How to create template?](./docs/how-to-create-template/index.md)
+- [How to create project?](./docs/en/how-to-create-project/index.md)
+- [How to create template?](./docs/en/how-to-create-template/index.md)
 - [License](#license)
 
 <br>
