@@ -1,11 +1,11 @@
 import { createElement } from 'react'
-import { NotfoundPage } from '@/components/NotfoundPage'
+import { NotfoundTemplate } from '@/components/template/notfound'
 import { RouterProvider, createRouter } from '@tanstack/react-router'
 import { routeTree } from '@/routeTree.gen'
 
 const routes = createRouter({
   routeTree,
-  defaultNotFoundComponent: NotfoundPage
+  defaultNotFoundComponent: NotfoundTemplate
 })
 
 declare module "@tanstack/react-router" {

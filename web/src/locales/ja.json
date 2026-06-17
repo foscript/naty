@@ -1,0 +1,30 @@
+{
+  "routes": {
+    "index": {
+      "section": [
+        {
+          "description": "あらゆるプロジェクトの作成を簡単にするスターターキット",
+          "docs": "ドキュメントを読む",
+          "seeTemplates": "テンプレートを見る"
+        }
+      ]
+    }
+  },
+
+  "components": {
+    "organism": {
+      "header": {
+        "home": "ホーム",
+        "templates": "テンプレート",
+        "docs": "ドキュメント"
+      }
+    },
+
+    "template": {
+      "notfound": {
+        "title": "ページが見つかりませんでした",
+        "goHome": "ホームに戻る"
+      }
+    }
+  }
+}

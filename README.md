@@ -3,7 +3,7 @@
   <img src="" width="80%">
 </div>
 
-Let's start developing right away without any complicated setup!
+The effortless starter for every project.
 
 <br>
 

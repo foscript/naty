@@ -2,8 +2,9 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
 // Original
-import '@/index.css'
-import { Router } from '@/components/Router'
+import '@/root/index.css'
+import '@/root/i18next'
+import { Router } from '@/root/router'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

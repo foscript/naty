@@ -1,0 +1,30 @@
+{
+  "routes": {
+    "index": {
+      "section": [
+        {
+          "description": "The effortless starter for every project.",
+          "docs": "Read Docs",
+          "seeTemplates": "See Templates"
+        }
+      ]
+    }
+  },
+
+  "components": {
+    "organism": {
+      "header": {
+        "home": "Home",
+        "templates": "Templates",
+        "docs": "Docs"
+      }
+    },
+
+    "template": {
+      "notfound": {
+        "title": "Page Not Found",
+        "goHome": "Go Home"
+      }
+    }
+  }
+}
