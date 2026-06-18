@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 
 import { RootOrganism } from '@/components/organism/root'
 import { HeaderOrganism } from '@/components/organism/header'
+import { FooterOrganism } from "@/components/organism/footer"
 
 export const Route = createFileRoute('/')({
   component: App
@@ -24,26 +25,27 @@ function App() {
   return (
     <RootOrganism className="bg-grid">
       <HeaderOrganism fixed />
-      <Section className="flex-col gap-6 text-center">
+      <Section className="flex-col gap-6 text-center animate-in fade-in slide-in-from-bottom-5 ease-out duration-500">
         <div className="flex flex-col gap-2 items-center">
           <img src="/favicon.svg" alt="Logo" className="size-8" />
           <h1 className="text-4xl font-bold">{t('routes.index.section.0.description')}</h1>
         </div>
 
         <div className="flex gap-4">
-          <Link to="/">
+          <Link to="/templates">
             <Button className="px-3 py-5">
               {t('routes.index.section.0.seeTemplates')}
             </Button>
           </Link>
     
-          <Link to="/">
+          <Link to="/docs">
             <Button className="px-3 py-5" variant="outline">
               {t('routes.index.section.0.docs')}
             </Button>
           </Link>
         </div>
       </Section>
+      <FooterOrganism />
     </RootOrganism>
   )
 }

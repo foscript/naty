@@ -1,20 +1,16 @@
-import { IconAtom } from '@/components/atom/icon'
 import { cn } from '@/lib/shadcn/utils'
-import { Link } from '@tanstack/react-router'
-import { useTranslation } from 'react-i18next'
+import { env } from '@/lib/env'
+import { Link, useLocation, type LinkProps } from '@tanstack/react-router'
 
-const NavLink = ({
-  to,
-  children
-}: {
-  to: string,
-  children: React.ReactNode
-}) => {
+function NavLink({ to, children }: { to: LinkProps["to"], children: React.ReactNode }) {
+  const { pathname } = useLocation()
+
   return (
-    <Link
+    <Link 
       to={to}
-      className="text-lg transition-all px-1 delay-75 hover:brightness-80"
-      activeProps={{ className: "border-b border-foreground" }}
+      className={cn("transition-all delay-75 px-0.5 text-sm text-muted-foreground",
+        pathname === to ? "text-sidebar-primary" : "hover:text-foreground"
+      )}
     >
       {children}
     </Link>
@@ -22,15 +18,17 @@ const NavLink = ({
 }
 
 export function HeaderOrganism({ className, fixed }: { className?: string, fixed?: boolean }) {
-  const { t } = useTranslation()
-
   return (
-    <header className={cn("border-b w-full px-4 py-4 bg-background flex items-center", fixed && "fixed top-0", className)}>
-      <IconAtom />
-      <div className="ml-auto items-center gap-3 hidden sm:flex">
-        <NavLink to="/"> {t('components.organism.header.home')} </NavLink>
-        <NavLink to="/templates"> {t('components.organism.header.templates')} </NavLink>
-        <NavLink to="/docs"> {t('components.organism.header.docs')} </NavLink>
+    <header className={cn("border-b w-full px-4 py-4 bg-background flex items-center gap-10", fixed ? "fixed top-0" : "sticky", className)}>
+      <Link to="/" className="flex transition-all delay-75 hover:text-muted-foreground items-center gap-2.5">
+        <img src="/favicon.svg" alt={env.title} className="size-6" />
+        <p className="font-semibold text-2xl">{env.title}</p>
+      </Link>
+
+      <div className="ml-auto items-center gap-2.5 hidden sm:flex">
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/templates">Templates</NavLink>
+        <NavLink to="/docs">Docs</NavLink>
       </div>
     </header>
   )
