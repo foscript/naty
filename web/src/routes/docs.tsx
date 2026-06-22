@@ -2,30 +2,37 @@ import { createFileRoute, Link } from '@tanstack/react-router'
 import { Button } from '@/components/shadcn/ui/button'
 import { cn } from '@/lib/shadcn/utils'
 import { useTranslation } from 'react-i18next'
-import { fetchGitHubData } from '@/lib/github'
-
-fetchGitHubData('docs/en/how-to-create-project/index.md').then((data) => {
-  console.log(data)
-})
 
 // Components
 import { RootOrganism } from '@/components/organism/root'
 import { HeaderOrganism } from '@/components/organism/header'
 import { FooterOrganism } from '@/components/organism/footer'
 
+// Test
+import { fetchGithubData } from '@/lib/github'
+import i18n from "i18next"
+(async () => {
+  try {
+    const data = await fetchGithubData(`/docs/${i18n.resolvedLanguage}/how-to-create-project/index.md`)
+    console.log(data)
+  } catch(error) {
+    console.error(error)
+  }
+})()
+
 export const Route = createFileRoute('/docs')({
   component: App
 })
 
-function Section({ children, className }: { children: React.ReactNode; className?: string }) {
-  return (
-    <div className={cn('min-h-svh w-full px-6 flex justify-center items-center', className)}>
-      {children}
-    </div>
-  )
-}
-
 function App() {
+  function Section({ children, className }: { children: React.ReactNode; className?: string }) {
+    return (
+      <div className={cn('min-h-svh w-full px-6 flex justify-center items-center', className)}>
+        {children}
+      </div>
+    )
+  }
+
   const { t } = useTranslation()
 
   return (

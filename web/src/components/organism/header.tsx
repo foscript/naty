@@ -2,22 +2,22 @@ import { cn } from '@/lib/shadcn/utils'
 import { env } from '@/lib/env'
 import { Link, useLocation, type LinkProps } from '@tanstack/react-router'
 
-function NavLink({ to, children }: { to: LinkProps['to'], children: React.ReactNode }) {
-  const { pathname } = useLocation()
-
-  return (
-    <Link 
-      to={to}
-      className={cn('text-sm',
-        pathname === to ? 'text-sidebar-primary' : 'hover:text-foreground text-muted-foreground'
-      )}
-    >
-      {children}
-    </Link>
-  )
-}
-
 export function HeaderOrganism({ className, fixed }: { className?: string, fixed?: boolean }) {
+  function NavLink({ to, children }: { to: LinkProps['to'], children: React.ReactNode }) {
+    const { pathname } = useLocation()
+
+    return (
+      <Link 
+        to={to}
+        className={cn('text-sm',
+          pathname === to ? 'text-sidebar-primary' : 'hover:text-foreground text-muted-foreground'
+        )}
+      >
+        {children}
+      </Link>
+    )
+  }
+
   return (
     <header className={cn(
       'border-b w-full px-4 py-4 bg-background flex items-center',

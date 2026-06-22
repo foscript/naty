@@ -12,15 +12,15 @@ export const Route = createFileRoute('/')({
   component: App
 })
 
-function Section({ children, className }: { children: React.ReactNode; className?: string }) {
-  return (
-    <div className={cn('min-h-svh w-full px-6 flex justify-center items-center', className)}>
-      {children}
-    </div>
-  )
-}
-
 function App() {
+  function Section({ children, className }: { children: React.ReactNode; className?: string }) {
+    return (
+      <div className={cn('min-h-svh w-full px-6 flex justify-center items-center', className)}>
+        {children}
+      </div>
+    )
+  }
+
   const { t } = useTranslation()
 
   return (
