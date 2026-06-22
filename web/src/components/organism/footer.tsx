@@ -1,28 +1,33 @@
 import { cn } from '@/lib/shadcn/utils'
 import { env } from '@/lib/env'
+
+// Icons
 import { FaGithub, FaInstagram } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
-import { Link } from '@tanstack/react-router'
 
-console.log(env)
+import { Link } from '@tanstack/react-router'
+import { type IconType } from 'react-icons/lib'
+
+function SocialIcon({ href, icon }: { href: string, icon: IconType }) {
+  // Change
+  const Icon = icon
+
+  return (
+    <a href={href} className='text-muted-foreground hover:text-foreground' target='_blank' rel='noopener noreferrer'>
+      <Icon className='size-6' />
+    </a>
+  )
+}
 
 export function FooterOrganism({ className }: { className?: string }) {
   return (
-    <footer className={cn('border-t w-full px-4 py-6 bg-background flex items-center gap-2', className)}>
-      <Link to="/" className='text-xl font-medium transition-all delay-75 hover:text-muted-foreground'>{env.title}</Link>
+    <footer className={cn('border-t w-full px-8 py-4 bg-background flex items-center', className)}>
+      <Link to='/' className='text-xl font-medium text-muted-foreground hover:text-foreground'>{env.VITE_APP_NAME}</Link>
 
-      <div className='ml-auto flex items-center gap-3 sm:gap-4'>
-        <a href={env.social.github} className="transition-all delay-75 text-muted-foreground hover:text-foreground" target='_blank' rel='noopener noreferrer'>
-          <FaGithub className='size-6' />
-        </a>
-
-        <a href={env.social.instagram} className="transition-all delay-75 text-muted-foreground hover:text-foreground" target='_blank' rel='noopener noreferrer'>
-          <FaInstagram className='size-6' />
-        </a>
-
-        <a href={env.social.x} className="transition-all delay-75 text-muted-foreground hover:text-foreground" target='_blank' rel='noopener noreferrer'>
-          <FaXTwitter className='size-6' />
-        </a>
+      <div className='ml-auto flex items-center gap-3'>
+        <SocialIcon href={env.VITE_SOCIAL_GITHUB_URL} icon={FaGithub} />
+        <SocialIcon href={env.VITE_SOCIAL_INSTAGRAM_URL} icon={FaInstagram} />
+        <SocialIcon href={env.VITE_SOCIAL_X_URL} icon={FaXTwitter} />
       </div>
     </footer>
   )

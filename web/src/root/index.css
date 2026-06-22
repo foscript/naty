@@ -3,8 +3,15 @@
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/noto-sans";
 
+/* Naty */
+@layer base {
+  * {
+    @apply delay-75 transition-all duration-75 ease-in-out;
+  }
+}
+
 @layer utilities {
-  .bg-grid {
+  .naty-bg-grid {
     background-size: 3rem 3rem;
     background-image: 
       linear-gradient(to right, var(--border) 1px, transparent 1px),

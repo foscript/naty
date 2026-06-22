@@ -1,9 +1,6 @@
 export const env = {
-  title: import.meta.env.VITE_TITLE,
-
-  social: {
-    github: import.meta.env.VITE_GITHUB_URL,
-    instagram: import.meta.env.VITE_INSTAGRAM_URL,
-    x: import.meta.env.VITE_X_URL
-  }
+  VITE_SOCIAL_GITHUB_URL: import.meta.env.VITE_SOCIAL_GITHUB_URL as string,
+  VITE_SOCIAL_INSTAGRAM_URL: import.meta.env.VITE_SOCIAL_INSTAGRAM_URL as string,
+  VITE_SOCIAL_X_URL: import.meta.env.VITE_SOCIAL_X_URL as string,
+  VITE_APP_NAME: import.meta.env.VITE_APP_NAME as string,
 }

@@ -1,6 +1,6 @@
 import { createElement } from 'react'
-import { NotfoundTemplate } from '@/components/template/notfound'
 import { RouterProvider, createRouter } from '@tanstack/react-router'
+import { NotfoundTemplate } from '@/components/template/notfound'
 import { routeTree } from '@/routeTree.gen'
 
 const routes = createRouter({
@@ -8,7 +8,7 @@ const routes = createRouter({
   defaultNotFoundComponent: NotfoundTemplate
 })
 
-declare module "@tanstack/react-router" {
+declare module '@tanstack/react-router' {
   interface Register {
     router: typeof routes
   }
