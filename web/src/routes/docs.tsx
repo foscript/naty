@@ -2,6 +2,11 @@ import { createFileRoute, Link } from '@tanstack/react-router'
 import { Button } from '@/components/shadcn/ui/button'
 import { cn } from '@/lib/shadcn/utils'
 import { useTranslation } from 'react-i18next'
+import { fetchGitHubData } from '@/lib/github'
+
+fetchGitHubData('docs/en/how-to-create-project/index.md').then((data) => {
+  console.log(data)
+})
 
 // Components
 import { RootOrganism } from '@/components/organism/root'
