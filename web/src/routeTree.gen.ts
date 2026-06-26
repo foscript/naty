@@ -14,7 +14,7 @@ import { Route as DocsRouteImport } from './routes/docs'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DocsIndexRouteImport } from './routes/docs/index'
 import { Route as DocsGettingStartedRouteImport } from './routes/docs/getting-started'
-import { Route as Docs404RouteImport } from './routes/docs/$404'
+import { Route as DocsSplatRouteImport } from './routes/docs/$'
 import { Route as DocsHowToCreateYourTemplateIndexRouteImport } from './routes/docs/how-to-create-your-template/index'
 import { Route as DocsHowToCreateYourTemplateQuickStartRouteImport } from './routes/docs/how-to-create-your-template/quick-start'
 
@@ -43,9 +43,9 @@ const DocsGettingStartedRoute = DocsGettingStartedRouteImport.update({
   path: '/getting-started',
   getParentRoute: () => DocsRoute,
 } as any)
-const Docs404Route = Docs404RouteImport.update({
-  id: '/$404',
-  path: '/$404',
+const DocsSplatRoute = DocsSplatRouteImport.update({
+  id: '/$',
+  path: '/$',
   getParentRoute: () => DocsRoute,
 } as any)
 const DocsHowToCreateYourTemplateIndexRoute =
@@ -65,7 +65,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/docs': typeof DocsRouteWithChildren
   '/templates': typeof TemplatesRoute
-  '/docs/$404': typeof Docs404Route
+  '/docs/$': typeof DocsSplatRoute
   '/docs/getting-started': typeof DocsGettingStartedRoute
   '/docs/': typeof DocsIndexRoute
   '/docs/how-to-create-your-template/quick-start': typeof DocsHowToCreateYourTemplateQuickStartRoute
@@ -74,7 +74,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/templates': typeof TemplatesRoute
-  '/docs/$404': typeof Docs404Route
+  '/docs/$': typeof DocsSplatRoute
   '/docs/getting-started': typeof DocsGettingStartedRoute
   '/docs': typeof DocsIndexRoute
   '/docs/how-to-create-your-template/quick-start': typeof DocsHowToCreateYourTemplateQuickStartRoute
@@ -85,7 +85,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/docs': typeof DocsRouteWithChildren
   '/templates': typeof TemplatesRoute
-  '/docs/$404': typeof Docs404Route
+  '/docs/$': typeof DocsSplatRoute
   '/docs/getting-started': typeof DocsGettingStartedRoute
   '/docs/': typeof DocsIndexRoute
   '/docs/how-to-create-your-template/quick-start': typeof DocsHowToCreateYourTemplateQuickStartRoute
@@ -97,7 +97,7 @@ export interface FileRouteTypes {
     | '/'
     | '/docs'
     | '/templates'
-    | '/docs/$404'
+    | '/docs/$'
     | '/docs/getting-started'
     | '/docs/'
     | '/docs/how-to-create-your-template/quick-start'
@@ -106,7 +106,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/templates'
-    | '/docs/$404'
+    | '/docs/$'
     | '/docs/getting-started'
     | '/docs'
     | '/docs/how-to-create-your-template/quick-start'
@@ -116,7 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/docs'
     | '/templates'
-    | '/docs/$404'
+    | '/docs/$'
     | '/docs/getting-started'
     | '/docs/'
     | '/docs/how-to-create-your-template/quick-start'
@@ -166,11 +166,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DocsGettingStartedRouteImport
       parentRoute: typeof DocsRoute
     }
-    '/docs/$404': {
-      id: '/docs/$404'
-      path: '/$404'
-      fullPath: '/docs/$404'
-      preLoaderRoute: typeof Docs404RouteImport
+    '/docs/$': {
+      id: '/docs/$'
+      path: '/$'
+      fullPath: '/docs/$'
+      preLoaderRoute: typeof DocsSplatRouteImport
       parentRoute: typeof DocsRoute
     }
     '/docs/how-to-create-your-template/': {
@@ -191,7 +191,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface DocsRouteChildren {
-  Docs404Route: typeof Docs404Route
+  DocsSplatRoute: typeof DocsSplatRoute
   DocsGettingStartedRoute: typeof DocsGettingStartedRoute
   DocsIndexRoute: typeof DocsIndexRoute
   DocsHowToCreateYourTemplateQuickStartRoute: typeof DocsHowToCreateYourTemplateQuickStartRoute
@@ -199,7 +199,7 @@ interface DocsRouteChildren {
 }
 
 const DocsRouteChildren: DocsRouteChildren = {
-  Docs404Route: Docs404Route,
+  DocsSplatRoute: DocsSplatRoute,
   DocsGettingStartedRoute: DocsGettingStartedRoute,
   DocsIndexRoute: DocsIndexRoute,
   DocsHowToCreateYourTemplateQuickStartRoute:

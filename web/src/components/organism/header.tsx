@@ -18,7 +18,7 @@ export function HeaderOrganism({ className, fixed }: { className?: string, fixed
 
   return (
     <header className={cn(
-      'border-b top-0 w-full px-4 py-4 bg-background flex items-center',
+      'border-b top-0 w-full px-4 py-4 bg-background flex items-center z-100',
       fixed ? 'fixed' : 'sticky',
       className
     )}>
