@@ -19,19 +19,19 @@ function CopyAnnounce({ markdown }: { markdown: string }) {
   )
 }
 
-function getDocNavigationLinks() {
-  return sideLinkList.flatMap((section) => {
-    const links = [{ title: section.title, link: section.link }]
-
-    if (section.links) {
-      links.push(...section.links.map((child) => ({ title: child.title, link: child.link })))
-    }
-
-    return links
-  })
-}
-
 function getNavigationPair(pathname: string) {
+  function getDocNavigationLinks() {
+    return sideLinkList.flatMap((section) => {
+      const links = [{ title: section.title, link: section.link }]
+
+      if (section.links) {
+        links.push(...section.links.map((child) => ({ title: child.title, link: child.link })))
+      }
+
+      return links
+    })
+  }
+
   const docNavigationLinks = getDocNavigationLinks()
   const currentIndex = docNavigationLinks.findIndex((item) => item.link === pathname)
 
@@ -59,16 +59,16 @@ export function RootDocsOnly({ raw, children }: { raw: string, children: React.R
         {children}
       </div>
 
-      <div className='flex items-center justify-between gap-3'>
+      <div className='flex items-center justify-between gap-8'>
         {previousLink && (
-          <Link to={previousLink.link} className='hover:border-muted-foreground w-50 flex min-w-0 flex-col gap-0.5 border px-4 py-3 rounded-md'>
+          <Link to={previousLink.link} className='w-50 flex flex-col gap-0.5 border px-4 py-3 rounded-md'>
             <p className='text-md'>Prev</p>
             <p className='text-md truncate'>{previousLink.title}</p>
           </Link>
         )}
 
         {nextLink && (
-          <Link to={nextLink.link} className='hover:border-muted-foreground w-50 flex min-w-0 flex-col gap-0.5 border px-4 py-3 rounded-md text-right ml-auto'>
+          <Link to={nextLink.link} className='w-50 flex flex-col gap-0.5 border px-4 py-3 rounded-md text-right ml-auto'>
             <p className='text-md'>Next</p>
             <p className='text-md truncate'>{nextLink.title}</p>
           </Link>
