@@ -1,8 +1,11 @@
 {
   "name": "naty-web",
-  "private": true,
   "version": "0.0.1",
+  "description": "Naty's website",
   "type": "module",
+  "keywords": ["naty", "web"],
+  "author": "Foscript",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -46,5 +49,12 @@
     "globals": "^17.6.0",
     "typescript": "~6.0.2",
     "vite": "^8.0.12"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.9.0",
+      "onFail": "download"
+    }
   }
 }

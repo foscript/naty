@@ -1,0 +1,33 @@
+{
+  "name": "naty",
+  "version": "0.0.1",
+  "description": "The effortless starter for every project.",
+  "type": "module",
+  "keywords": [
+    "naty",
+    "cli",
+    "starter",
+    "template"
+  ],
+  "author": "Foscript",
+  "license": "ISC",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "create-naty": "./dist/bin/create-naty.js"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.9.0",
+      "onFail": "download"
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.0",
+    "typescript": "^6.0.3"
+  }
+}
