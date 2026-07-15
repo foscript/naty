@@ -6,6 +6,16 @@ import { initReactI18next } from "react-i18next"
 import en from "@/locales/en.json"
 import ja from "@/locales/ja.json"
 
+// Set types
+declare module 'i18next' {
+  interface CustomTypeOptions {
+    defaultNS: 'translation',
+    resources: {
+      translation: typeof en
+    }
+  }
+}
+
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)

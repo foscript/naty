@@ -12,23 +12,21 @@
   },
 
   "components": {
-    "atom": {
-      "copyButton": ["Copy", "Copied!", "Failed..."]
-    },
-
-    "only": {
-      "docs": {
-        "root": {
-          "copyAnnounce": {
-            "title": "Try copy prompt!",
-            "description": "The AI will explain it simply for you instead."
-          }
+    "copyButton": ["Copy", "Copied!", "Failed..."],
+    
+    "docs": {
+      "root": {
+        "copyAnnounce": {
+          "title": "Try copy prompt!",
+          "description": "The AI will explain it simply for you instead."
         }
-      },
-
-      "notfound": {
-        "title": "Page Not Found"
       }
+    }
+  },
+
+  "root": {
+    "notfoundPage": {
+      "title": "Page Not Found"
     }
   }
 }

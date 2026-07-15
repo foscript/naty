@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
-import { CopyButtonAtom } from '@/components/atom/copyButton'
-import { AnnounceDocsOnly } from '@/components/only/docs/announce'
+import { CopyButton } from '@/components/copyButton'
+import { AnnounceDocsOnly } from '@/components/docs/announce'
 import { sideLinkList } from '@/routes/docs'
 import { Bot } from 'lucide-react'
 import { Link, useLocation } from '@tanstack/react-router'
@@ -14,7 +14,7 @@ function CopyAnnounce({ markdown }: { markdown: string }) {
       title={t('components.only.docs.root.copyAnnounce.title')}
       description={t('components.only.docs.root.copyAnnounce.description')}
     >
-      <CopyButtonAtom text={markdown} size='sm' />
+      <CopyButton text={markdown} size='sm' />
     </AnnounceDocsOnly>
   )
 }

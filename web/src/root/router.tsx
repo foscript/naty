@@ -1,12 +1,12 @@
 import { RouterProvider, createRouter } from '@tanstack/react-router'
-import { NotfoundTemplate } from '@/components/only/notfound'
+import { NotfoundPage } from '@/root/notfoundPage'
 import { routeTree } from '@/routeTree.gen'
 import type { FC } from 'react'
 
 // Initialize the router
 const routes = createRouter({
   routeTree,
-  defaultNotFoundComponent: NotfoundTemplate
+  defaultNotFoundComponent: NotfoundPage
 })
 
 // Define the router types

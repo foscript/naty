@@ -2,10 +2,10 @@ import { createFileRoute, Link, Outlet, type LinkProps } from '@tanstack/react-r
 import { MDXProvider } from '@mdx-js/react'
 
 // Components
-import { RootOrganism } from '@/components/organism/root'
-import { HeaderOrganism } from '@/components/organism/header'
-import { FooterOrganism } from '@/components/organism/footer'
-import { CopyButtonAtom } from '@/components/atom/copyButton'
+import { RootTemplate } from '@/components/rootTemplate'
+import { Header } from '@/components/header'
+import { Footer } from '@/components/footer'
+import { CopyButton } from '@/components/copyButton'
 
 type SideLinkListLink = {
   title: string,
@@ -86,8 +86,8 @@ export const Route = createFileRoute('/docs')({
 
 function App() {
   return (
-    <RootOrganism>
-      <HeaderOrganism />
+    <RootTemplate>
+      <Header />
       
       <div className='w-full flex'>
         <div className='w-75 p-5 flex flex-col gap-4 border-r'>
@@ -143,7 +143,7 @@ function App() {
 
           code: ({ children }) => {
             return (
-              <CopyButtonAtom show size='sm' text={children} />
+              <CopyButton show size='sm' text={children} />
             )
           }
         }}>
@@ -153,7 +153,7 @@ function App() {
         </MDXProvider>
       </div>
 
-      <FooterOrganism />
-    </RootOrganism>
+      <Footer />
+    </RootTemplate>
   )
 }

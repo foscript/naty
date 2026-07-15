@@ -1,9 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
 
 // Components
-import { RootOrganism } from '@/components/organism/root'
-import { HeaderOrganism } from '@/components/organism/header'
-import { FooterOrganism } from '@/components/organism/footer'
+import { RootTemplate } from '@/components/rootTemplate'
+import { Header } from '@/components/header'
+import { Footer } from '@/components/footer'
 
 export const Route = createFileRoute('/templates')({
   component: App,
@@ -11,9 +11,9 @@ export const Route = createFileRoute('/templates')({
 
 function App() {
   return (
-    <RootOrganism>
-      <HeaderOrganism />
-      <FooterOrganism />
-    </RootOrganism>
+    <RootTemplate>
+      <Header />
+      <Footer />
+    </RootTemplate>
   )
 }

@@ -4,10 +4,10 @@ import { cn } from '@/lib/shadcn/utils'
 import { useTranslation } from 'react-i18next'
 
 // Components
-import { RootOrganism } from '@/components/organism/root'
-import { HeaderOrganism } from '@/components/organism/header'
-import { FooterOrganism } from '@/components/organism/footer'
-import { LogoAtom } from '@/components/atom/logo'
+import { RootTemplate } from '@/components/rootTemplate'
+import { Header } from '@/components/header'
+import { Footer } from '@/components/footer'
+import { Logo } from '@/components/logo'
 
 export const Route = createFileRoute('/')({
   component: App
@@ -25,12 +25,12 @@ function App() {
   const { t } = useTranslation()
 
   return (
-    <RootOrganism className='naty-bg-grid'>
-      <HeaderOrganism fixed />
+    <RootTemplate className='naty-bg-grid'>
+      <Header fixed />
 
       <Section className='flex-col gap-6 text-center'>
         <div className='flex flex-col gap-2 items-center'>
-          <LogoAtom className='size-8' />
+          <Logo className='size-8' />
           <h1 className='text-4xl font-bold'>{t('routes.index.section.0.description')}</h1>
         </div>
 
@@ -49,7 +49,7 @@ function App() {
         </div>
       </Section>
 
-      <FooterOrganism />
-    </RootOrganism>
+      <Footer />
+    </RootTemplate>
   )
 }

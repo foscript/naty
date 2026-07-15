@@ -1,6 +1,6 @@
 import { cn } from '@/lib/shadcn/utils'
 
-export function RootOrganism({ children, className, ...props }: { children: React.ReactNode, className?: string }) {
+export function RootTemplate({ children, className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div className={cn(
       'min-h-svh w-full bg-background text-foreground',

@@ -1,15 +1,11 @@
 import { cn } from '@/lib/shadcn/utils'
 import { env } from '@/lib/env'
 import { FaGithub } from 'react-icons/fa'
-
 import { Link } from '@tanstack/react-router'
 import { type IconType } from 'react-icons/lib'
 
-export function FooterOrganism({ className }: { className?: string }) {
-  function SocialIcon({ href, icon }: { href: string, icon: IconType }) {
-    // Change
-    const Icon = icon
-
+export function Footer({ className }: { className?: string }) {
+  function SocialIcon({ href, icon: Icon }: { href: string, icon: IconType }) {
     return (
       <a href={href} className='text-muted-foreground hover:text-foreground' target='_blank' rel='noopener noreferrer'>
         <Icon className='size-6' />

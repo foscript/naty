@@ -11,24 +11,22 @@
     }
   },
 
-  "components": {
-    "atom": {
-      "copyButton": ["コピー", "コピーしました！", "失敗しました..."]
-    },
-
-    "only": {
-      "docs": {
-        "root": {
-          "copyAnnounce": {
-            "title": "プロンプトコピーをお試しください。",
-            "description": "AIが変わりにわかりやすく説明してくれるでしょう。"
-          }
+    "components": {
+    "copyButton": ["コピー", "コピーしました！", "失敗しました..."],
+    
+    "docs": {
+      "root": {
+        "copyAnnounce": {
+          "title": "プロンプトコピーをお試しあれ！",
+          "description": "AIが変わりにわかりやすく説明してくれルキ脳です。"
         }
-      },
-
-      "notfound": {
-        "title": "ページが見つかりませんでした"
       }
+    }
+  },
+
+  "root": {
+    "notfoundPage": {
+      "title": "ページが見つかりませんでした"
     }
   }
 }

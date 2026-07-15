@@ -1,7 +1,6 @@
 import { Outlet, createRootRoute } from '@tanstack/react-router'
-import { RootOrganism } from '@/components/organism/root'
+import { RootTemplate } from '@/components/rootTemplate'
 import { Toaster } from '@/components/shadcn/ui/sonner'
-
 import { cn } from '@/lib/shadcn/utils'
 import { useDarkMode } from 'usehooks-ts'
 
@@ -13,9 +12,9 @@ function App() {
   const { isDarkMode } = useDarkMode()
 
   return (
-      <RootOrganism className={cn(isDarkMode && 'dark')}>
+      <RootTemplate className={cn(isDarkMode && 'dark')}>
         <Outlet />
         <Toaster />
-      </RootOrganism>
+      </RootTemplate>
   )
 }

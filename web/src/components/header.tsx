@@ -1,22 +1,22 @@
 import { cn } from '@/lib/shadcn/utils'
 import { env } from '@/lib/env'
 import { Link, type LinkProps } from '@tanstack/react-router'
-import { LogoAtom } from '../atom/logo'
+import { Logo } from '@/components/logo'
 
-export function HeaderOrganism({ className, fixed }: { className?: string, fixed?: boolean }) {
-  function NavLink({ to, children }: { to: LinkProps['to'], children: React.ReactNode }) {
-    return (
-      <Link
-        to={to}
-        className='text-sm'
-        activeProps={{ className: 'text-sidebar-primary' }}
-        inactiveProps={{ className: 'text-muted-foreground hover:text-foreground' }}
-      >
-        {children}
-      </Link>
-    )
-  }
+function NavLink({ to, children }: { to: LinkProps['to'], children: React.ReactNode }) {
+  return (
+    <Link
+      to={to}
+      className='text-sm'
+      activeProps={{ className: 'text-sidebar-primary' }}
+      inactiveProps={{ className: 'text-muted-foreground hover:text-foreground' }}
+    >
+      {children}
+    </Link>
+  )
+}
 
+export function Header({ className, fixed }: { className?: string, fixed?: boolean }) {
   return (
     <header className={cn(
       'border-b top-0 w-full px-4 py-4 bg-background flex items-center z-100',
@@ -24,7 +24,7 @@ export function HeaderOrganism({ className, fixed }: { className?: string, fixed
       className
     )}>
       <Link to='/' className='flex items-center gap-2'>
-        <LogoAtom className='size-6' />
+        <Logo className='size-6' />
         <p className='font-semibold text-2xl'>{env.appName}</p>
       </Link>
 

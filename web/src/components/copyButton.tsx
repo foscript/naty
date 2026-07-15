@@ -1,38 +1,41 @@
-import * as React from 'react'
 import { Button } from '@/components/shadcn/ui/button'
 import { Copy, CopyCheck, CopyX } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useEffect, useRef, useState } from 'react'
 
-type CopyButtonState = 'default' | 'complete' | 'error'
 type CopyButton = React.ComponentProps<typeof Button> & {
   text: string
   show?: boolean
 }
 
-const copyButtonStateMap = {
-  default: { labelKey: 'components.atom.copyButton.0', Icon: Copy },
-  complete: { labelKey: 'components.atom.copyButton.1', Icon: CopyCheck },
-  error: { labelKey: 'components.atom.copyButton.2', Icon: CopyX },
+// Copy State
+type CopyState = 'default' | 'complete' | 'error'
+const copyStateMap: Record<CopyState, { localeKey: string; Icon: React.ComponentType }> = {
+  default: { localeKey: 'components.copyButton.0', Icon: Copy },
+  complete: { localeKey: 'components.copyButton.1', Icon: CopyCheck },
+  error: { localeKey: 'components.copyButton.2', Icon: CopyX }
 } as const
 
-export function CopyButtonAtom({ text, show, ...props }: CopyButton) {
-  const [copyState, setCopyState] = useState<CopyButtonState>('default')
+export function CopyButton({ text, show, ...props }: CopyButton) {
+  const [copyState, setCopyState] = useState<CopyState>('default')
   const timeoutRef = useRef<number | null>(null)
   const { t } = useTranslation()
 
   useEffect(() => {
     return () => {
+      // Reset timeout
       if (timeoutRef.current !== null) {
         window.clearTimeout(timeoutRef.current)
       }
     }
   }, [])
 
-  const { labelKey, Icon } = copyButtonStateMap[copyState]
-  const buttonLabel = show ? text : t(labelKey)
+  // Set copy button state
+  const { localeKey, Icon } = copyStateMap[copyState]
+  const label = show ? text : t(localeKey)
 
   async function handleCopy() {
+    // Already copied or error
     if (copyState !== 'default') {
       return
     }
@@ -43,6 +46,7 @@ export function CopyButtonAtom({ text, show, ...props }: CopyButton) {
     } catch {
       setCopyState('error')
     } finally {
+      // Set timeout
       timeoutRef.current = window.setTimeout(() => {
         setCopyState('default')
         timeoutRef.current = null
@@ -52,7 +56,7 @@ export function CopyButtonAtom({ text, show, ...props }: CopyButton) {
 
   return (
     <Button onClick={handleCopy} variant='outline' {...props}>
-      {buttonLabel}
+      {label}
       <Icon />
     </Button>
   )
