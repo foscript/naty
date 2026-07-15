@@ -31,19 +31,19 @@ function App() {
       <Section className='flex-col gap-6 text-center'>
         <div className='flex flex-col gap-2 items-center'>
           <Logo className='size-8' />
-          <h1 className='text-4xl font-bold'>{t('routes.index.section.0.description')}</h1>
+          <h1 className='text-4xl font-bold'>{t('routes.index.section.description')}</h1>
         </div>
 
         <div className='flex gap-4'>
           <Link to='/templates'>
             <Button className='px-2.5 py-4.5'>
-              {t('routes.index.section.0.seeTemplates')}
+              {t('routes.index.section.seeTemplates')}
             </Button>
           </Link>
-    
+
           <Link to='/docs'>
             <Button className='px-2.5 py-4.5' variant='outline'>
-              {t('routes.index.section.0.docs')}
+              {t('routes.index.section.docs')}
             </Button>
           </Link>
         </div>

@@ -11,8 +11,8 @@ function CopyAnnounce({ markdown }: { markdown: string }) {
   return (
     <AnnounceDocsOnly
       icon={<Bot />}
-      title={t('components.only.docs.root.copyAnnounce.title')}
-      description={t('components.only.docs.root.copyAnnounce.description')}
+      title={t('components.docs.root.copyAnnounce.title')}
+      description={t('components.docs.root.copyAnnounce.description')}
     >
       <CopyButton text={markdown} size='sm' />
     </AnnounceDocsOnly>

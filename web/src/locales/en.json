@@ -1,19 +1,21 @@
 {
   "routes": {
     "index": {
-      "section": [
-        {
-          "description": "The effortless starter for every project.",
-          "docs": "Read Docs",
-          "seeTemplates": "See Templates"
-        }
-      ]
+      "section": {
+        "description": "The effortless starter for every project.",
+        "docs": "Read Docs",
+        "seeTemplates": "See Templates"
+      }
     }
   },
 
   "components": {
-    "copyButton": ["Copy", "Copied!", "Failed..."],
-    
+    "copyButton": {
+      "default": "Copy",
+      "complete": "Copied!",
+      "error": "Failed..."
+    },
+
     "docs": {
       "root": {
         "copyAnnounce": {

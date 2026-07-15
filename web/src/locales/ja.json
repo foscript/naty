@@ -1,19 +1,21 @@
 {
   "routes": {
     "index": {
-      "section": [
-        {
-          "description": "あらゆるプロジェクトの作成を簡単にするスターターキット",
-          "docs": "ドキュメントを読む",
-          "seeTemplates": "テンプレートを見る"
-        }
-      ]
+      "section": {
+        "description": "あらゆるプロジェクトの作成を簡単にするスターターキット",
+        "docs": "ドキュメントを読む",
+        "seeTemplates": "テンプレートを見る"
+      }
     }
   },
 
-    "components": {
-    "copyButton": ["コピー", "コピーしました！", "失敗しました..."],
-    
+  "components": {
+    "copyButton": {
+      "default": "コピー",
+      "complete": "コピーしました！",
+      "error": "失敗しました..."
+    },
+
     "docs": {
       "root": {
         "copyAnnounce": {
