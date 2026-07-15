@@ -4,6 +4,7 @@ import { Link, type LinkProps } from '@tanstack/react-router'
 import { Logo } from '@/components/logo'
 import { Menu } from 'lucide-react'
 import { useState } from 'react'
+import { useMediaQuery } from 'usehooks-ts'
 
 function NavLink({ to, children, className }: React.HTMLAttributes<HTMLDivElement> & { to: LinkProps['to'] }) {
   return (
@@ -26,18 +27,23 @@ const navLinks: { to: LinkProps['to'], label: string }[] = [
 
 export function Header({ className, fixed }: { className?: string, fixed?: boolean }) {
   const [isOpen, setIsOpen] = useState<boolean>(false)
+  const isSm = useMediaQuery('(min-width: 640px)')
+
+  if (isSm && isOpen) {
+    setIsOpen(false)
+  }
 
   return (
-    <div className={cn(fixed ? 'fixed' : 'sticky', isOpen && 'h-svh', 'z-100 top-0 w-full flex flex-col')}>
+    <div className={cn(fixed ? 'fixed' : 'sticky', isOpen && 'h-svh', 'bg-background z-100 top-0 w-full flex flex-col')}>
       <header className={cn(
-        'border-b px-4 py-4 flex items-center bg-background',
+        'border-b px-4 py-4 flex items-center',
         className
       )}>
-        <div className='flex items-center gap-3'>
-          <Menu className='sm:hidden size-5 cursor-pointer' onClick={() => setIsOpen(!isOpen)} />
+        <div className='flex items-center gap-3.5'>
+          <Menu className='sm:hidden size-6.5 cursor-pointer' onClick={() => setIsOpen(!isOpen)} />
           <Link to='/' className='flex items-center gap-2'>
-            <Logo className='size-6' />
-            <p className='font-semibold text-2xl'>{env.appName}</p>
+            <Logo className='sm:size-6 size-8' />
+            <p className='font-semibold sm:text-2xl text-3xl'>{env.appName}</p>
           </Link>
         </div>
 
@@ -51,9 +57,9 @@ export function Header({ className, fixed }: { className?: string, fixed?: boole
       </header>
 
       {isOpen && (
-        <div className='flex-1 flex flex-col gap-3 py-2 px-4 bg-background/85'>
+        <div className='flex-1 flex flex-col gap-3.5 py-2 px-4'>
           {navLinks.map((link) => (
-            <NavLink key={link.to} to={link.to} className='text-lg'>
+            <NavLink key={link.to} to={link.to} className='text-2xl'>
               {link.label}
             </NavLink>
           ))}
