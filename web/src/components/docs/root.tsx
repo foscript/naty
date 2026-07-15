@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { CopyButton } from '@/components/copyButton'
 import { AnnounceDocsOnly } from '@/components/docs/announce'
-import { sideLinkList } from '@/routes/docs'
+import { sideList } from '@/routes/docs'
 import { Bot } from 'lucide-react'
 import { Link, useLocation } from '@tanstack/react-router'
 
@@ -21,7 +21,7 @@ function CopyAnnounce({ markdown }: { markdown: string }) {
 
 function getNavigationPair(pathname: string) {
   function getDocNavigationLinks() {
-    return sideLinkList.flatMap((section) => {
+    return sideList.flatMap((section) => {
       const links = [{ title: section.title, link: section.link }]
 
       if (section.links) {

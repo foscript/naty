@@ -7,18 +7,18 @@ import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { CopyButton } from '@/components/copyButton'
 
-type SideLinkListLink = {
+type SideLink = {
   title: string,
   link: LinkProps['to']
 }
 
-type SideLinkList = {
+type SideList = {
   title: string,
   link: LinkProps['to'],
-  links?: SideLinkListLink[]
+  links?: SideLink[]
 }
 
-export const sideLinkList: SideLinkList[] = [
+export const sideList: SideList[] = [
   {
     title: 'Getting Started',
     link: '/docs/getting-started'
@@ -37,7 +37,7 @@ export const sideLinkList: SideLinkList[] = [
   }
 ]
 
-function SideListLink({ link, title }: SideLinkListLink) {
+function SideLink({ link, title }: SideLink) {
   return (
     <Link
       to={link}
@@ -50,14 +50,14 @@ function SideListLink({ link, title }: SideLinkListLink) {
   )
 }
 
-function SideLinkList({ link, title, links }: SideLinkList) {
-  function SideLinkAccordionLink() {
+function SideList({ link, title, links }: SideList) {
+  function SideListLink() {
     if (!links) return null
 
     return (
       <div className='pl-4 flex flex-col gap-4'>
         {links.map((linkData) => (
-          <SideListLink key={linkData.link} link={linkData.link} title={linkData.title} />
+          <SideLink key={linkData.link} link={linkData.link} title={linkData.title} />
         ))}
       </div>
     )
@@ -75,7 +75,7 @@ function SideLinkList({ link, title, links }: SideLinkList) {
         {title}
       </Link>
 
-      <SideLinkAccordionLink />
+      <SideListLink />
     </div>
   )
 }
@@ -91,13 +91,13 @@ function App() {
       
       <div className='w-full flex'>
         <div className='w-75 p-5 flex flex-col gap-4 border-r'>
-          {sideLinkList.map((linkData) => {
+          {sideList.map((linkData) => {
             if (linkData.links) {
               return (
-                <SideLinkList key={linkData.link} title={linkData.title} link={linkData.link} links={linkData.links} />
+                <SideList key={linkData.link} title={linkData.title} link={linkData.link} links={linkData.links} />
               )
             } else {
-              return <SideListLink key={linkData.link} link={linkData.link} title={linkData.title} />
+              return <SideLink key={linkData.link} link={linkData.link} title={linkData.title} />
             }
           })}
         </div>
