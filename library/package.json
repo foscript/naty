@@ -19,13 +19,6 @@
   "scripts": {
     "build": "tsc"
   },
-  "devEngines": {
-    "packageManager": {
-      "name": "pnpm",
-      "version": "^11.9.0",
-      "onFail": "download"
-    }
-  },
   "devDependencies": {
     "@types/node": "^26.1.0",
     "typescript": "^6.0.3"
