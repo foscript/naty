@@ -2,7 +2,7 @@ import { cn } from '@/lib/shadcn/utils'
 import { env } from '@/lib/env'
 import { Link, type LinkProps } from '@tanstack/react-router'
 import { Logo } from '@/components/logo'
-import { Menu } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { useMediaQuery } from 'usehooks-ts'
 
@@ -41,7 +41,7 @@ export function Header({ className, fixed }: { className?: string, fixed?: boole
       )}>
         <Link to='/' className='flex items-center gap-2'>
           <Logo className='size-6' />
-          <p className='font-semibold text-2xl'>{env.appName}</p>
+          <p className='font-semibold text-xl'>{env.appName}</p>
         </Link>
 
         <div className='ml-auto items-center gap-3 flex'>
@@ -51,8 +51,10 @@ export function Header({ className, fixed }: { className?: string, fixed?: boole
                 {link.label}
               </NavLink>
             ))
+          ) : isOpen ? (
+            <X className='size-6 cursor-pointer' onClick={() => setIsOpen(false)} />
           ) : (
-            <Menu className='size-6 cursor-pointer' onClick={() => setIsOpen(!isOpen)} />
+            <Menu className='size-6 cursor-pointer' onClick={() => setIsOpen(true)} />
           )}
         </div>
       </header>
