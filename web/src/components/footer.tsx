@@ -1,6 +1,5 @@
 import { cn } from '@/lib/shadcn/utils'
 import { env } from '@/lib/env'
-import { FaGithub } from 'react-icons/fa'
 import { Link } from '@tanstack/react-router'
 import { type IconType } from 'react-icons/lib'
 
@@ -18,7 +17,9 @@ export function Footer({ className }: { className?: string }) {
       <Link to='/' className='text-2xl font-medium text-muted-foreground hover:text-foreground'>{env.appName}</Link>
 
       <div className='ml-auto flex items-center sm:gap-3 gap-4'>
-        <SocialIcon href={env.social.github} icon={FaGithub} />
+        {env.social?.map((social) => (
+          <SocialIcon key={social.link} href={social.link} icon={social.icon} />
+        ))}
       </div>
     </footer>
   )

@@ -22,7 +22,7 @@ function NavLink({ to, children, className }: React.HTMLAttributes<HTMLDivElemen
 const navLinks: { to: LinkProps['to'], label: string }[] = [
   { to: '/', label: 'Home' },
   { to: '/templates', label: 'Templates' },
-  { to: '/docs', label: 'Docs' },
+  { to: '/docs', label: 'Docs' }
 ]
 
 export function Header({ className, fixed }: { className?: string, fixed?: boolean }) {
@@ -39,25 +39,26 @@ export function Header({ className, fixed }: { className?: string, fixed?: boole
         'border-b px-4 py-4 flex items-center',
         className
       )}>
-        <div className='flex items-center gap-3.5'>
-          <Menu className='sm:hidden size-6.5 cursor-pointer' onClick={() => setIsOpen(!isOpen)} />
-          <Link to='/' className='flex items-center gap-2'>
-            <Logo className='sm:size-6 size-8' />
-            <p className='font-semibold sm:text-2xl text-3xl'>{env.appName}</p>
-          </Link>
-        </div>
+        <Link to='/' className='flex items-center gap-2'>
+          <Logo className='size-6' />
+          <p className='font-semibold text-2xl'>{env.appName}</p>
+        </Link>
 
-        <div className='ml-auto items-center gap-3 hidden sm:flex'>
-          {navLinks.map((link) => (
-            <NavLink key={link.to} to={link.to}>
-              {link.label}
-            </NavLink>
-          ))}
+        <div className='ml-auto items-center gap-3 flex'>
+          {isSm ? (
+            navLinks.slice(0, 3).map((link) => (
+              <NavLink key={link.to} to={link.to}>
+                {link.label}
+              </NavLink>
+            ))
+          ) : (
+            <Menu className='size-6 cursor-pointer' onClick={() => setIsOpen(!isOpen)} />
+          )}
         </div>
       </header>
 
       {isOpen && (
-        <div className='flex-1 flex flex-col gap-3.5 py-2 px-4'>
+        <div className='flex-1 flex flex-col gap-4 p-6'>
           {navLinks.map((link) => (
             <NavLink key={link.to} to={link.to} className='text-2xl'>
               {link.label}
