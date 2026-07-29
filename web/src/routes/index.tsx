@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { Button } from '@/components/shadcn/ui/button'
+import { AnimatedGridPattern } from '@/components/shadcn/ui/animated-grid-pattern'
 import { cn } from '@/lib/shadcn/utils'
 import { useTranslation } from 'react-i18next'
 
@@ -25,8 +26,18 @@ function App() {
   const { t } = useTranslation()
 
   return (
-    <RootTemplate className='naty-bg-grid'>
+    <RootTemplate>
       <Header fixed />
+
+      <AnimatedGridPattern
+        numSquares={30}
+        maxOpacity={0.1}
+        duration={3}
+        repeatDelay={1}
+        className={cn(
+          "skew-y-12"
+        )}
+      />
 
       <Section className='flex-col gap-6 text-center'>
         <div className='flex flex-col gap-2 items-center'>

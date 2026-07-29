@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "description": "Naty's website",
   "type": "module",
-  "keywords": ["naty", "web"],
+  "keywords": [
+    "naty",
+    "web"
+  ],
   "author": "Foscript",
   "license": "MIT",
   "scripts": {
@@ -22,6 +25,7 @@
     "i18next": "^26.3.1",
     "i18next-browser-languagedetector": "^8.2.1",
     "lucide-react": "^1.20.0",
+    "motion": "^12.42.2",
     "next-themes": "^0.4.6",
     "radix-ui": "^1.6.0",
     "react": "^19.2.6",

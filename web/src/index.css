@@ -10,16 +10,6 @@
   }
 }
 
-@layer utilities {
-  /* Set the background to a knit pattern. */
-  .naty-bg-grid {
-    background-size: 3rem 3rem;
-    background-image: 
-      linear-gradient(to right, var(--border) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--border) 1px, transparent 1px);
-  }
-}
-
 /* Shadcn UI Settings */
 @custom-variant dark (&:is(.dark *));
 
