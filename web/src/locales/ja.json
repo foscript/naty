@@ -17,13 +17,8 @@
       "error": "失敗しました..."
     },
 
-    "docs": {
-      "root": {
-        "copyAnnounce": {
-          "title": "プロンプトコピーをお試しあれ！",
-          "description": "AIが変わりにわかりやすく説明してくれます！"
-        }
-      }
+    "header": {
+      "searchTemplates": "探す"
     }
   },
 

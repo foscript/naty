@@ -14,7 +14,8 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
-    "create-naty": "./dist/bin/create-naty.js"
+    "create-naty": "./dist/bin/create-naty.js",
+    "create-naty-kit": "./dist/bin/create-naty-kit.js"
   },
   "scripts": {
     "build": "tsc"

@@ -16,13 +16,13 @@ export const env: Env = {
   social: [
     {
       name: 'github',
-      link: 'https://github.com/foscript/naty/',
+      link: 'https://github.com/foscript',
       icon: FaGithub
     },
 
     {
       name: 'instagram',
-      link: 'https://www.instagram.com/foscript/',
+      link: 'https://www.instagram.com/foscript',
       icon: FaInstagram
     },
 
@@ -32,4 +32,4 @@ export const env: Env = {
       icon: FaXTwitter
     }
   ]
-}
+} as const

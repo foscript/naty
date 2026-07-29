@@ -46,7 +46,7 @@ function App() {
           <h1 className='text-3xl mb-2 sm:text-[42px] font-bold text-balance'>
             <Trans
               i18nKey='routes.index.section.title'
-              components={[<AuroraText key='0' children={null} />]}
+              components={[<AuroraText colors={['#155dfb', '#009966']} key='0' children={null} />]}
             />
           </h1>
 

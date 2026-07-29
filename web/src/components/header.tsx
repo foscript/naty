@@ -1,31 +1,31 @@
 import { cn } from '@/lib/shadcn/utils'
-import { env } from '@/lib/env'
 import { Link, type LinkProps } from '@tanstack/react-router'
-import { Logo } from '@/components/logo'
-import { EllipsisVertical, X } from 'lucide-react'
+import { EllipsisVertical, X, Search } from 'lucide-react'
 import { useState } from 'react'
 import { useMediaQuery } from 'usehooks-ts'
+import { Button } from '@/components/shadcn/ui/button'
+import { useTranslation } from 'react-i18next'
+import { FaGithub } from 'react-icons/fa'
 
-function NavLink({ to, children, className }: React.HTMLAttributes<HTMLDivElement> & { to: LinkProps['to'] }) {
+function NavLink({ ...props }: LinkProps) {
   return (
     <Link
-      to={to}
-      className={cn('text-sm', className)}
       activeProps={{ className: 'text-sidebar-primary' }}
       inactiveProps={{ className: 'text-muted-foreground hover:text-foreground' }}
-    >
-      {children}
-    </Link>
+      {...props}
+    />
   )
 }
 
 const navLinks: { to: LinkProps['to'], label: string }[] = [
   { to: '/', label: 'Home' },
-  { to: '/templates', label: 'Templates' },
-  { to: '/', label: 'Docs' }
+  { to: '/', label: 'Docs' },
+  { to: '/', label: 'Development' },
+  { to: '/', label: 'Licence' },
 ]
 
 export function Header({ className, fixed, ...props }: { fixed?: boolean } & React.ComponentPropsWithoutRef<'header'>) {
+  const { t } = useTranslation()
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const isSm = useMediaQuery('(min-width: 640px)')
 
@@ -36,20 +36,17 @@ export function Header({ className, fixed, ...props }: { fixed?: boolean } & Rea
   return (
     <div className={cn(fixed ? 'fixed' : 'sticky', isOpen && 'h-svh', 'bg-background z-100 top-0 w-full flex flex-col')} {...props}>
       <header className={cn(
-        'border-b p-3 flex items-center',
+        'border-b px-3 py-3 flex items-center',
         className
       )}>
-        <Link to='/' className='flex items-center gap-1.5'>
-          <Logo className='size-5' />
-          <p className='font-semibold text-lg'>{env.appName}</p>
-        </Link>
-
-        <div className='ml-auto items-center gap-3 flex'>
+        <div className='items-center flex'>
           {isSm ? (
-            navLinks.slice(0, 3).map((link) => (
-              <NavLink key={link.to} to={link.to}>
-                {link.label}
-              </NavLink>
+            navLinks.map((link) => (
+              <Button key={link.to} variant='ghost'>
+                <NavLink to={link.to}>
+                  {link.label}
+                </NavLink>
+              </Button>
             ))
           ) : isOpen ? (
             <X className='size-6 cursor-pointer' onClick={() => setIsOpen(false)} />
@@ -57,14 +54,32 @@ export function Header({ className, fixed, ...props }: { fixed?: boolean } & Rea
             <EllipsisVertical className='size-6 cursor-pointer' onClick={() => setIsOpen(true)} />
           )}
         </div>
+
+        <div className='items-center gap-4 ml-auto flex'>
+          <a href='https://github.com/foscript/naty' target='_blank' rel='noopener noreferrer'>
+            <Button variant='outline'>
+              <FaGithub />
+              GitHub
+            </Button>
+          </a>
+
+          <Link to='/templates'>
+            <Button>
+              <Search />
+              {t('components.header.searchTemplates')}
+            </Button>
+          </Link>
+        </div>
       </header>
 
       {isOpen && (
         <div className='flex-1 flex flex-col gap-3 p-6'>
           {navLinks.map((link) => (
-            <NavLink key={link.to} to={link.to} className='text-2xl'>
-              {link.label}
-            </NavLink>
+            <div key={link.to} className='text-2xl'>
+              <NavLink to={link.to}>
+                {link.label}
+              </NavLink>
+            </div>
           ))}
         </div>
       )}

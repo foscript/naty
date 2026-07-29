@@ -17,13 +17,8 @@
       "error": "Failed..."
     },
 
-    "docs": {
-      "root": {
-        "copyAnnounce": {
-          "title": "Try copy prompt!",
-          "description": "The AI will explain it simply for you instead."
-        }
-      }
+    "header": {
+      "searchTemplates": "Search"
     }
   },
 

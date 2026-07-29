@@ -3,7 +3,7 @@
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/noto-sans";
 
-/* Naty Settings */
+/* Settings */
 @layer base {
   * {
     @apply delay-75 transition-all duration-75 ease-in-out;
