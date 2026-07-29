@@ -22,10 +22,10 @@ function NavLink({ to, children, className }: React.HTMLAttributes<HTMLDivElemen
 const navLinks: { to: LinkProps['to'], label: string }[] = [
   { to: '/', label: 'Home' },
   { to: '/templates', label: 'Templates' },
-  { to: '/docs', label: 'Docs' }
+  { to: '/', label: 'Docs' }
 ]
 
-export function Header({ className, fixed }: { className?: string, fixed?: boolean }) {
+export function Header({ className, fixed, ...props }: { fixed?: boolean } & React.ComponentPropsWithoutRef<'header'>) {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const isSm = useMediaQuery('(min-width: 640px)')
 
@@ -34,7 +34,7 @@ export function Header({ className, fixed }: { className?: string, fixed?: boole
   }
 
   return (
-    <div className={cn(fixed ? 'fixed' : 'sticky', isOpen && 'h-svh', 'bg-background z-100 top-0 w-full flex flex-col')}>
+    <div className={cn(fixed ? 'fixed' : 'sticky', isOpen && 'h-svh', 'bg-background z-100 top-0 w-full flex flex-col')} {...props}>
       <header className={cn(
         'border-b p-3 flex items-center',
         className

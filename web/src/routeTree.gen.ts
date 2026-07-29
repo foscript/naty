@@ -10,22 +10,11 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TemplatesRouteImport } from './routes/templates'
-import { Route as DocsRouteImport } from './routes/docs'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as DocsIndexRouteImport } from './routes/docs/index'
-import { Route as DocsGettingStartedRouteImport } from './routes/docs/getting-started'
-import { Route as DocsSplatRouteImport } from './routes/docs/$'
-import { Route as DocsCreateTemplateIndexRouteImport } from './routes/docs/create-template/index'
-import { Route as DocsCreateTemplateQuickStartRouteImport } from './routes/docs/create-template/quick-start'
 
 const TemplatesRoute = TemplatesRouteImport.update({
   id: '/templates',
   path: '/templates',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DocsRoute = DocsRouteImport.update({
-  id: '/docs',
-  path: '/docs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -33,98 +22,30 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DocsIndexRoute = DocsIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => DocsRoute,
-} as any)
-const DocsGettingStartedRoute = DocsGettingStartedRouteImport.update({
-  id: '/getting-started',
-  path: '/getting-started',
-  getParentRoute: () => DocsRoute,
-} as any)
-const DocsSplatRoute = DocsSplatRouteImport.update({
-  id: '/$',
-  path: '/$',
-  getParentRoute: () => DocsRoute,
-} as any)
-const DocsCreateTemplateIndexRoute = DocsCreateTemplateIndexRouteImport.update({
-  id: '/create-template/',
-  path: '/create-template/',
-  getParentRoute: () => DocsRoute,
-} as any)
-const DocsCreateTemplateQuickStartRoute =
-  DocsCreateTemplateQuickStartRouteImport.update({
-    id: '/create-template/quick-start',
-    path: '/create-template/quick-start',
-    getParentRoute: () => DocsRoute,
-  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/docs': typeof DocsRouteWithChildren
   '/templates': typeof TemplatesRoute
-  '/docs/$': typeof DocsSplatRoute
-  '/docs/getting-started': typeof DocsGettingStartedRoute
-  '/docs/': typeof DocsIndexRoute
-  '/docs/create-template/quick-start': typeof DocsCreateTemplateQuickStartRoute
-  '/docs/create-template/': typeof DocsCreateTemplateIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/templates': typeof TemplatesRoute
-  '/docs/$': typeof DocsSplatRoute
-  '/docs/getting-started': typeof DocsGettingStartedRoute
-  '/docs': typeof DocsIndexRoute
-  '/docs/create-template/quick-start': typeof DocsCreateTemplateQuickStartRoute
-  '/docs/create-template': typeof DocsCreateTemplateIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/docs': typeof DocsRouteWithChildren
   '/templates': typeof TemplatesRoute
-  '/docs/$': typeof DocsSplatRoute
-  '/docs/getting-started': typeof DocsGettingStartedRoute
-  '/docs/': typeof DocsIndexRoute
-  '/docs/create-template/quick-start': typeof DocsCreateTemplateQuickStartRoute
-  '/docs/create-template/': typeof DocsCreateTemplateIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/docs'
-    | '/templates'
-    | '/docs/$'
-    | '/docs/getting-started'
-    | '/docs/'
-    | '/docs/create-template/quick-start'
-    | '/docs/create-template/'
+  fullPaths: '/' | '/templates'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/templates'
-    | '/docs/$'
-    | '/docs/getting-started'
-    | '/docs'
-    | '/docs/create-template/quick-start'
-    | '/docs/create-template'
-  id:
-    | '__root__'
-    | '/'
-    | '/docs'
-    | '/templates'
-    | '/docs/$'
-    | '/docs/getting-started'
-    | '/docs/'
-    | '/docs/create-template/quick-start'
-    | '/docs/create-template/'
+  to: '/' | '/templates'
+  id: '__root__' | '/' | '/templates'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  DocsRoute: typeof DocsRouteWithChildren
   TemplatesRoute: typeof TemplatesRoute
 }
 
@@ -137,13 +58,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TemplatesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/docs': {
-      id: '/docs'
-      path: '/docs'
-      fullPath: '/docs'
-      preLoaderRoute: typeof DocsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -151,65 +65,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/docs/': {
-      id: '/docs/'
-      path: '/'
-      fullPath: '/docs/'
-      preLoaderRoute: typeof DocsIndexRouteImport
-      parentRoute: typeof DocsRoute
-    }
-    '/docs/getting-started': {
-      id: '/docs/getting-started'
-      path: '/getting-started'
-      fullPath: '/docs/getting-started'
-      preLoaderRoute: typeof DocsGettingStartedRouteImport
-      parentRoute: typeof DocsRoute
-    }
-    '/docs/$': {
-      id: '/docs/$'
-      path: '/$'
-      fullPath: '/docs/$'
-      preLoaderRoute: typeof DocsSplatRouteImport
-      parentRoute: typeof DocsRoute
-    }
-    '/docs/create-template/': {
-      id: '/docs/create-template/'
-      path: '/create-template'
-      fullPath: '/docs/create-template/'
-      preLoaderRoute: typeof DocsCreateTemplateIndexRouteImport
-      parentRoute: typeof DocsRoute
-    }
-    '/docs/create-template/quick-start': {
-      id: '/docs/create-template/quick-start'
-      path: '/create-template/quick-start'
-      fullPath: '/docs/create-template/quick-start'
-      preLoaderRoute: typeof DocsCreateTemplateQuickStartRouteImport
-      parentRoute: typeof DocsRoute
-    }
   }
 }
 
-interface DocsRouteChildren {
-  DocsSplatRoute: typeof DocsSplatRoute
-  DocsGettingStartedRoute: typeof DocsGettingStartedRoute
-  DocsIndexRoute: typeof DocsIndexRoute
-  DocsCreateTemplateQuickStartRoute: typeof DocsCreateTemplateQuickStartRoute
-  DocsCreateTemplateIndexRoute: typeof DocsCreateTemplateIndexRoute
-}
-
-const DocsRouteChildren: DocsRouteChildren = {
-  DocsSplatRoute: DocsSplatRoute,
-  DocsGettingStartedRoute: DocsGettingStartedRoute,
-  DocsIndexRoute: DocsIndexRoute,
-  DocsCreateTemplateQuickStartRoute: DocsCreateTemplateQuickStartRoute,
-  DocsCreateTemplateIndexRoute: DocsCreateTemplateIndexRoute,
-}
-
-const DocsRouteWithChildren = DocsRoute._addFileChildren(DocsRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  DocsRoute: DocsRouteWithChildren,
   TemplatesRoute: TemplatesRoute,
 }
 export const routeTree = rootRouteImport

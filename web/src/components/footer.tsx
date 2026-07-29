@@ -11,9 +11,9 @@ function SocialIcon({ href, icon: Icon }: { href: string, icon: IconType }) {
   )
 }
 
-export function Footer({ className }: { className?: string }) {
+export function Footer({ className, ...props }: React.ComponentPropsWithoutRef<'footer'>) {
   return (
-    <footer className={cn('border-t w-full px-3 py-4.5 bg-background flex items-center', className)}>
+    <footer className={cn('border-t w-full px-3 py-4.5 bg-background flex items-center', className)} {...props}>
       <Link to='/' className='text-xl font-medium text-muted-foreground'>{env.appName}</Link>
 
       <div className='ml-auto flex items-center gap-2.5'>
