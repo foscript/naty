@@ -2,7 +2,7 @@ import { cn } from '@/lib/shadcn/utils'
 import { env } from '@/lib/env'
 import { Link, type LinkProps } from '@tanstack/react-router'
 import { Logo } from '@/components/logo'
-import { Menu, X } from 'lucide-react'
+import { EllipsisVertical, X } from 'lucide-react'
 import { useState } from 'react'
 import { useMediaQuery } from 'usehooks-ts'
 
@@ -36,7 +36,7 @@ export function Header({ className, fixed }: { className?: string, fixed?: boole
   return (
     <div className={cn(fixed ? 'fixed' : 'sticky', isOpen && 'h-svh', 'bg-background z-100 top-0 w-full flex flex-col')}>
       <header className={cn(
-        'border-b px-6 py-3 flex items-center gap-30',
+        'border-b p-3 flex items-center',
         className
       )}>
         <Link to='/' className='flex items-center gap-1.5'>
@@ -44,7 +44,7 @@ export function Header({ className, fixed }: { className?: string, fixed?: boole
           <p className='font-semibold text-lg'>{env.appName}</p>
         </Link>
 
-        <div className='items-center gap-3 flex'>
+        <div className='ml-auto items-center gap-3 flex'>
           {isSm ? (
             navLinks.slice(0, 3).map((link) => (
               <NavLink key={link.to} to={link.to}>
@@ -54,13 +54,13 @@ export function Header({ className, fixed }: { className?: string, fixed?: boole
           ) : isOpen ? (
             <X className='size-6 cursor-pointer' onClick={() => setIsOpen(false)} />
           ) : (
-            <Menu className='size-6 cursor-pointer' onClick={() => setIsOpen(true)} />
+            <EllipsisVertical className='size-6 cursor-pointer' onClick={() => setIsOpen(true)} />
           )}
         </div>
       </header>
 
       {isOpen && (
-        <div className='flex-1 flex flex-col gap-4 p-6'>
+        <div className='flex-1 flex flex-col gap-3 p-6'>
           {navLinks.map((link) => (
             <NavLink key={link.to} to={link.to} className='text-2xl'>
               {link.label}

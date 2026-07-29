@@ -2,14 +2,16 @@ import { type IconType } from 'react-icons/lib'
 import { FaGithub, FaInstagram } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 
-export const env: {
-  appName: string
+type Env = {
+  appName: string,
   social?: {
-    name: string
-    link: string
-    icon: IconType
+    name: string,
+    link: string,
+    icon: IconType,
   }[]
-} = {
+}
+
+export const env: Env = {
   appName: 'Naty',
   social: [
     {

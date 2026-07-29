@@ -3,6 +3,7 @@ import { Copy, CopyCheck, CopyX } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useEffect, useRef, useState } from 'react'
 import type { ParseKeys } from 'i18next'
+import type { IconType } from 'react-icons/lib'
 
 type CopyButton = React.ComponentProps<typeof Button> & {
   text: string
@@ -11,7 +12,7 @@ type CopyButton = React.ComponentProps<typeof Button> & {
 
 // Copy State
 type CopyState = 'default' | 'complete' | 'error'
-const copyStateMap: Record<CopyState, { localeKey: ParseKeys, Icon: React.ComponentType }> = {
+const copyStateMap: Record<CopyState, { localeKey: ParseKeys, Icon: IconType }> = {
   default: { localeKey: 'components.copyButton.default', Icon: Copy },
   complete: { localeKey: 'components.copyButton.complete', Icon: CopyCheck },
   error: { localeKey: 'components.copyButton.error', Icon: CopyX }
@@ -22,9 +23,9 @@ export function CopyButton({ text, show, ...props }: CopyButton) {
   const timeoutRef = useRef<number | null>(null)
   const { t } = useTranslation()
 
+  // Reset timeout on unmount
   useEffect(() => {
     return () => {
-      // Reset timeout
       if (timeoutRef.current !== null) {
         window.clearTimeout(timeoutRef.current)
       }
@@ -36,8 +37,8 @@ export function CopyButton({ text, show, ...props }: CopyButton) {
   const label = show ? text : t(localeKey)
 
   async function handleCopy() {
-    // Already copied or error
-    if (copyState !== 'default') {
+    // Already copied
+    if (copyState != 'complete') {
       return
     }
 

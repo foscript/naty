@@ -1,7 +1,6 @@
 import { RouterProvider, createRouter } from '@tanstack/react-router'
 import { NotfoundPage } from '@/root/notfoundPage'
 import { routeTree } from '@/routeTree.gen'
-import type { FC } from 'react'
 
 // Initialize the router
 const routes = createRouter({
@@ -16,4 +15,4 @@ declare module '@tanstack/react-router' {
   }
 }
 
-export const Router: FC = () => <RouterProvider router={routes} />
+export const Router = () => <RouterProvider router={routes} />
