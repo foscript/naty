@@ -36,15 +36,15 @@ export function Header({ className, fixed }: { className?: string, fixed?: boole
   return (
     <div className={cn(fixed ? 'fixed' : 'sticky', isOpen && 'h-svh', 'bg-background z-100 top-0 w-full flex flex-col')}>
       <header className={cn(
-        'border-b px-4 py-4 flex items-center',
+        'border-b px-6 py-3 flex items-center gap-30',
         className
       )}>
-        <Link to='/' className='flex items-center gap-2'>
-          <Logo className='size-6' />
-          <p className='font-semibold text-xl'>{env.appName}</p>
+        <Link to='/' className='flex items-center gap-1.5'>
+          <Logo className='size-5' />
+          <p className='font-semibold text-lg'>{env.appName}</p>
         </Link>
 
-        <div className='ml-auto items-center gap-3 flex'>
+        <div className='items-center gap-3 flex'>
           {isSm ? (
             navLinks.slice(0, 3).map((link) => (
               <NavLink key={link.to} to={link.to}>

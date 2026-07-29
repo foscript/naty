@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
 import { Router } from '@/root/router'
-import '@/root/index.css'
+import '@/index.css'
 import '@/root/initI18next'
 
 createRoot(document.getElementById('root')!).render(
