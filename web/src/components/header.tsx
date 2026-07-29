@@ -19,9 +19,9 @@ function NavLink({ ...props }: LinkProps) {
 
 const navLinks: { to: LinkProps['to'], label: string }[] = [
   { to: '/', label: 'Home' },
-  { to: '/', label: 'Docs' },
-  { to: '/', label: 'Development' },
-  { to: '/', label: 'Licence' },
+  { to: '/docs' as LinkProps['to'], label: 'Docs' },
+  { to: '/docs/development' as LinkProps['to'], label: 'Development' },
+  { to: '/licence' as LinkProps['to'], label: 'Licence' },
 ]
 
 export function Header({ className, fixed, ...props }: { fixed?: boolean } & React.ComponentPropsWithoutRef<'header'>) {
@@ -34,15 +34,15 @@ export function Header({ className, fixed, ...props }: { fixed?: boolean } & Rea
   }
 
   return (
-    <div className={cn(fixed ? 'fixed' : 'sticky', isOpen && 'h-svh', 'bg-background z-100 top-0 w-full flex flex-col')} {...props}>
+    <div className={cn(fixed ? 'fixed' : 'sticky', isOpen && 'h-svh', 'z-100 top-0 w-full flex flex-col')} {...props}>
       <header className={cn(
-        'border-b px-3 py-3 flex items-center',
+        'border-b px-3 sm:px-5 lg:px-10 py-3 flex items-center bg-background',
         className
       )}>
         <div className='items-center flex'>
           {isSm ? (
             navLinks.map((link) => (
-              <Button key={link.to} variant='ghost'>
+              <Button key={link.label} variant='ghost' className='text-md'>
                 <NavLink to={link.to}>
                   {link.label}
                 </NavLink>
@@ -73,7 +73,7 @@ export function Header({ className, fixed, ...props }: { fixed?: boolean } & Rea
       </header>
 
       {isOpen && (
-        <div className='flex-1 flex flex-col gap-3 p-6'>
+        <div className='flex-1 flex flex-col gap-3 p-6 bg-background/90 shadow-none backdrop-blur'>
           {navLinks.map((link) => (
             <div key={link.to} className='text-2xl'>
               <NavLink to={link.to}>
