@@ -36,7 +36,7 @@ export function Header({ className, fixed, ...props }: { fixed?: boolean } & Rea
   return (
     <div className={cn(fixed ? 'fixed' : 'sticky', isOpen && 'h-svh', 'z-100 top-0 w-full flex flex-col')} {...props}>
       <header className={cn(
-        'border-b px-3 sm:px-5 lg:px-10 py-3 flex items-center bg-background',
+        'border-b px-3 sm:px-5 py-3 flex items-center bg-background',
         className
       )}>
         <div className='items-center flex'>
