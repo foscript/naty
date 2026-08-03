@@ -1,8 +1,6 @@
 declare module '*.mdx' {
   import type { ComponentType } from 'react'
 
-  const Component: ComponentType<any>
-
-  export default Component
+  export default ComponentType<any>
   export const rawMarkdown: string
 }

@@ -1,8 +1,12 @@
 import { Outlet, createRootRoute } from '@tanstack/react-router'
-import { RootTemplate } from '@/components/rootTemplate'
-import { Toaster } from '@/components/shadcn/ui/sonner'
-import { cn } from '@/lib/shadcn/utils'
+
+// Hooks
+import { useEffect } from 'react'
 import { useDarkMode } from 'usehooks-ts'
+
+// Components
+import { Toaster } from '@/components/shadcn/ui/sonner'
+import { RootTemplate } from '@/components/rootTemplate'
 
 export const Route = createRootRoute({
   component: App
@@ -11,8 +15,16 @@ export const Route = createRootRoute({
 function App() {
   const { isDarkMode } = useDarkMode()
 
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add('dark')
+    } else {
+      document.body.classList.remove('dark')
+    }
+  }, [isDarkMode])
+
   return (
-      <RootTemplate className={cn(isDarkMode && 'dark')}>
+      <RootTemplate>
         <Outlet />
         <Toaster />
       </RootTemplate>

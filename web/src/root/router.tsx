@@ -1,5 +1,5 @@
 import { RouterProvider, createRouter } from '@tanstack/react-router'
-import { NotfoundPage } from '@/root/notfoundPage'
+import { NotfoundPage } from './notfoundPage'
 import { routeTree } from '@/routeTree.gen'
 
 // Initialize the router

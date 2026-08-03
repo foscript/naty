@@ -1,7 +1,12 @@
+// Components
 import { Button } from '@/components/shadcn/ui/button'
 import { Copy, CopyCheck, CopyX } from 'lucide-react'
+
+// Hooks
 import { useTranslation } from 'react-i18next'
 import { useEffect, useRef, useState } from 'react'
+
+// Types
 import type { ParseKeys } from 'i18next'
 import type { IconType } from 'react-icons/lib'
 
@@ -13,9 +18,9 @@ type CopyButton = React.ComponentProps<typeof Button> & {
 // Copy State
 type CopyState = 'default' | 'complete' | 'error'
 const copyStateMap: Record<CopyState, { localeKey: ParseKeys, Icon: IconType }> = {
-  default: { localeKey: 'components.copyButton.default', Icon: Copy },
-  complete: { localeKey: 'components.copyButton.complete', Icon: CopyCheck },
-  error: { localeKey: 'components.copyButton.error', Icon: CopyX }
+  default: { localeKey: 'components.copyButton.state.default', Icon: Copy },
+  complete: { localeKey: 'components.copyButton.state.complete', Icon: CopyCheck },
+  error: { localeKey: 'components.copyButton.state.error', Icon: CopyX }
 } as const
 
 export function CopyButton({ text, show, ...props }: CopyButton) {

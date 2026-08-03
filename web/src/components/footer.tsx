@@ -1,4 +1,3 @@
-import { cn } from '@/lib/shadcn/utils'
 import { env } from '@/lib/env'
 import { Link } from '@tanstack/react-router'
 import { type IconType } from 'react-icons/lib'
@@ -11,9 +10,9 @@ function SocialIcon({ href, icon: Icon }: { href: string, icon: IconType }) {
   )
 }
 
-export function Footer({ className, ...props }: React.ComponentPropsWithoutRef<'footer'>) {
+export function Footer() {
   return (
-    <footer className={cn('border-t w-full px-3 py-4.5 bg-background flex items-center', className)} {...props}>
+    <footer className='border-t w-full px-6 py-4.5 bg-background flex items-center'>
       <Link to='/' className='text-xl font-medium text-muted-foreground'>{env.appName}</Link>
 
       <div className='ml-auto flex items-center gap-2.5'>
