@@ -30,10 +30,10 @@ function App() {
 
       <Section className='flex-col gap-10 text-center bg-background'>
         <div className='flex flex-col gap-4 items-center'>
-          <h1 className='text-3xl sm:text-[42px] font-bold text-balance'>
+          <h1 className='text-3xl sm:text-[42px] font-semibold text-balance'>
             <Trans
               i18nKey='routes.index.section.first.title'
-              components={[<span key='0' className='' />]}
+              components={[<span key='0'></span>]}
             />
           </h1>
 
@@ -43,18 +43,18 @@ function App() {
         </div>
 
         <div className='flex gap-4'>
-          <Link to='/templates'>
-            <Button className='px-2.5 py-4.5'>
+          <Button className='px-2.5 py-4.5' asChild>
+            <Link to='/'>
               {t('routes.index.section.first.seeTemplates')}
-            </Button>
-          </Link>
+            </Link>
+          </Button>
 
-          <Link to='/'>
-            <Button className='px-2.5 py-4.5' variant='outline'>
-              <Book />
-              {t('routes.index.section.first.docs')}
-            </Button>
-          </Link>
+          <Button className='px-2.5 py-4.5' variant='outline' asChild>
+            <Link to='/docs'>
+              <Book className='mr-2 h-4 w-4' />
+              {t('routes.index.section.first.readDocs')}
+            </Link>
+          </Button>
         </div>
       </Section>
 

@@ -23,8 +23,8 @@ function NavLink({ ...props }: { className?: string, to: LinkProps['to'], childr
 
 const navLinkMap: { to: LinkProps['to'], label: string }[] = [
   { to: '/', label: 'Home' },
-  { to: '/docs' as LinkProps['to'], label: 'Docs' },
-  { to: '/templates', label: 'Templates' },
+  { to: '/docs', label: 'Docs' },
+  { to: '/templates' as LinkProps['to'], label: 'Templates' },
   { to: '/licence' as LinkProps['to'], label: 'Licence' },
 ]
 
@@ -65,7 +65,7 @@ export function Header({ fixed, ...props }: { fixed?: boolean } & React.Componen
           </Button>
 
           <Button asChild>
-            <Link to='/templates'>
+            <Link to='/'>
               <Search />
               {t('components.header.searchTemplates')}
             </Link>

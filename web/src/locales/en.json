@@ -5,7 +5,7 @@
         "first": {
           "title": "The <0>easiest-to-use</0> template ecosystem",
           "description": "No need to start from scratch. Let’s browse our diverse template options and find the perfect one for your needs!",
-          "docs": "Read Docs",
+          "readDocs": "Read Docs",
           "seeTemplates": "See Templates"
         }
       }

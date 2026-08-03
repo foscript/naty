@@ -21,7 +21,7 @@ export function NotfoundPage() {
   return (
     <RootTemplate className='flex flex-col justify-center items-center px-6'>
       <div className='flex items-center gap-4'>
-        <h2 className='text-2xl md:text-3xl font-semibold'>404</h2>
+        <h2 className='text-2xl font-semibold'>404</h2>
         <h1 className='text-md md:text-xl'>{t('root.notfoundPage.message')}</h1>
       </div>
     </RootTemplate>
