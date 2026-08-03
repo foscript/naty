@@ -50,9 +50,9 @@ function App() {
           </Button>
 
           <Button className='px-2.5 py-4.5' variant='outline' asChild>
-            <Link to='/docs'>
+            <Link to='/docs/getting-started'>
               <Book className='mr-2 h-4 w-4' />
-              {t('routes.index.section.first.readDocs')}
+              {t('routes.index.section.first.gettingStarted')}
             </Link>
           </Button>
         </div>

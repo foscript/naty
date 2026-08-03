@@ -11,7 +11,7 @@ import type { ParseKeys } from 'i18next'
 import type { IconType } from 'react-icons/lib'
 
 type CopyButton = React.ComponentProps<typeof Button> & {
-  text: string
+  children: string
   show?: boolean
 }
 
@@ -23,7 +23,7 @@ const copyStateMap: Record<CopyState, { localeKey: ParseKeys, Icon: IconType }> 
   error: { localeKey: 'components.copyButton.state.error', Icon: CopyX }
 } as const
 
-export function CopyButton({ text, show, ...props }: CopyButton) {
+export function CopyButton({ children, show, ...props }: CopyButton) {
   const [copyState, setCopyState] = useState<CopyState>('default')
   const timeoutRef = useRef<number | null>(null)
   const { t } = useTranslation()
@@ -39,16 +39,16 @@ export function CopyButton({ text, show, ...props }: CopyButton) {
 
   // Set copy button state
   const { localeKey, Icon } = copyStateMap[copyState]
-  const label = show ? text : t(localeKey)
+  const label = show ? children : t(localeKey)
 
   async function handleCopy() {
     // Already copied
-    if (copyState != 'complete') {
+    if (copyState === 'complete') {
       return
     }
 
     try {
-      await navigator.clipboard.writeText(text)
+      await navigator.clipboard.writeText(children)
       setCopyState('complete')
     } catch {
       setCopyState('error')

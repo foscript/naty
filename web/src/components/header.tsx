@@ -2,7 +2,7 @@ import { cn } from '@/lib/shadcn/utils'
 import { Link, type LinkProps } from '@tanstack/react-router'
 
 // Hooks
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useMediaQuery } from 'usehooks-ts'
 import { useTranslation } from 'react-i18next'
 
@@ -33,9 +33,11 @@ export function Header({ fixed, ...props }: { fixed?: boolean } & React.Componen
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const isSm = useMediaQuery('(min-width: 640px)')
 
-  if (isSm && isOpen) {
-    setIsOpen(false)
-  }
+  useEffect(() => {
+    if (isSm && isOpen) {
+      setIsOpen(false)
+    }
+  }, [isSm, isOpen])
 
   return (
     <div className={cn(fixed ? 'fixed' : 'sticky', isOpen && 'h-screen', 'z-100 top-0 w-full flex flex-col')} {...props}>

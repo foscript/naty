@@ -16,7 +16,7 @@ A modern introductory website.
 ## Quick Start
 1. Clone this project.
 2. Run `npm install` to install dependencies.
-3. Run `npm run dev` to start develop!.
+3. Run `npm run dev` to start develop!
 
 <br>
 
