@@ -7,7 +7,9 @@
     "naty",
     "cli",
     "starter",
-    "template"
+    "template",
+    "foscript",
+    "tool"
   ],
   "author": "Foscript",
   "license": "ISC",
