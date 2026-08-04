@@ -1,5 +1,5 @@
 import { createFileRoute, Outlet } from '@tanstack/react-router'
-import { type LinkProps } from '@tanstack/react-router'
+import { type LinkProps, Link } from '@tanstack/react-router'
 
 // Components
 import NotfoundDocs from '@/docs/notfound.mdx'
@@ -13,10 +13,28 @@ export const Route = createFileRoute('/docs')({
   notFoundComponent: NotFound
 })
 
-export const docsOrder: { title: string; link: LinkProps['to'] }[] = [
+export const docsOrder: {
+  title: string,
+  link: LinkProps['to'],
+  children?: { 
+    title: string,
+    link: LinkProps['to'] 
+  }[]
+}[] = [
   {
     title: 'Getting Started',
-    link: '/docs/getting-started' as LinkProps['to']
+    link: '/docs/getting-started'
+  },
+
+  {
+    title: 'Tutorial',
+    link: '/docs/tutorial' as LinkProps['to'],
+    children: [
+      {
+        title: 'Create a project',
+        link: '/docs/tutorial/create-a-project' as LinkProps['to']
+      }
+    ]
   }
 ]
 
@@ -51,16 +69,37 @@ const mdxComponents = {
     </ol>
   ),
 
-  a: ({ children, ...props }: React.ComponentPropsWithoutRef<'a'>) => (
-    <a className='text-blue-500' target='_blank' rel='noopener noreferrer' {...props}>
-      {children}
-    </a>
-  ),
+  a: ({ children, href, ...props }: React.ComponentPropsWithoutRef<'a'>) => {
+    // If href is undefined, return nothing.
+    if (typeof href === 'undefined') return
+
+    // Case URL
+    if (/^https?:\/\/\S+/.test(href)) {
+      return (
+        <a href={href} target='_blank' rel='noopener noreferrer' className='text-blue-500' {...props}>
+          {children}
+        </a>
+      )
+    }
+
+    // Case Others
+    return (
+      <Link to={href as any} {...props} className='text-blue-500'>
+        {children}
+      </Link>
+    )
+  },
 
   code: ({ children }: React.ComponentPropsWithoutRef<'code'>) => (
     <code className='bg-muted px-2 py-1 rounded-md'>
       {children}
     </code>
+  ),
+
+  p: ({ children }: React.ComponentPropsWithoutRef<'p'>) => (
+    <p className='leading-loose'>
+      {children}
+    </p>
   )
 }
 

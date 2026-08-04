@@ -3,7 +3,7 @@
   <img src="" width="80%">
 </div>
 
-The effortless starter for every project.
+The easiest-to-use template ecosystem
 
 <br>
 
@@ -24,8 +24,9 @@ The effortless starter for every project.
 <br>
 
 ## What is Naty?
-- This tool allows you to create a new project using your favorite templates.
-- You can skip tedious settings and start development immediately.
+This tool allows you to create a new project using your favorite templates.
+
+You can skip tedious settings and start development immediately.
 
 <br>
 
@@ -33,4 +34,4 @@ The effortless starter for every project.
 Please see [here](https://naty.foscript.com/docs) for detailed documation.
 
 ## License
-All project is being developed under the [MIT License](./LICENSE).
+This project is being developed under the [MIT License](./LICENSE).
