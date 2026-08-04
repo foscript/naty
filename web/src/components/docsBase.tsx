@@ -8,16 +8,6 @@ export function DocsBase({ children, raw }: { children: React.ReactNode, raw: st
   const { t } = useTranslation()
   const { pathname } = useLocation()
 
-  // Set Copy Prompt
-  const copyPrompt = `You are an explainer for the documentation.
-
-Please explain the documentation according to the following rules:
-- Explain in the user's language.
-- If the user asks a question, prioritize answering it based on the documentation.
-
-The documentation is as follows:
-${raw}`
-
   // This logic flattens hierarchical data.
   const docsList = docsOrder.flatMap((item) => [
     { title: item.title, link: item.link },
@@ -28,6 +18,18 @@ ${raw}`
   const currentDocsIndex = docsList.findIndex((doc) => doc.link === pathname)
   const previousDocs = currentDocsIndex > 0 ? docsList[currentDocsIndex - 1] : null
   const nextDocs = currentDocsIndex >= 0 && currentDocsIndex < docsList.length - 1 ? docsList[currentDocsIndex + 1] : null
+
+  // Set Copy Prompt
+  const copyPrompt = `# You are an explainer for the documentation.
+The user is currently at ${pathname}.
+The next section is ${nextDocs?.link || 'none'}.
+
+## Please explain the documentation according to the following rules:
+- Explain in the user's language.
+- If the user asks a question, prioritize answering it based on the documentation.
+
+## The documentation is as follows:
+${raw}`
 
   return (
     <div className='flex flex-col gap-5 sm:px-10 px-5 pt-7.5 pb-10'>
