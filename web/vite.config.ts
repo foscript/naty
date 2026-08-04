@@ -7,9 +7,11 @@ import { tanstackRouter } from '@tanstack/router-plugin/vite'
 import babel from '@rolldown/plugin-babel'
 import tailwindcss from '@tailwindcss/vite'
 import mdx from '@mdx-js/rollup'
+import { mdxRaw } from './plugins/mdxRaw'
 
 export default defineConfig({
   plugins: [
+    mdxRaw(),
     mdx({
       providerImportSource: '@mdx-js/react'
     }),
