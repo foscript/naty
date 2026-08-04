@@ -3,6 +3,7 @@ import { type LinkProps, Link } from '@tanstack/react-router'
 
 // Components
 import NotfoundDocs from '@/docs/notfound.mdx'
+import { DocsBase } from '@/components/docsBase'
 import { MDXProvider } from '@mdx-js/react'
 import { RootTemplate } from '@/components/rootTemplate'
 import { Header } from '@/components/header'
@@ -109,9 +110,7 @@ function App() {
       <Header />
 
       <MDXProvider components={mdxComponents}>
-        <div className='sm:px-10 px-5 py-15 flex flex-col gap-5'>
-          <Outlet />
-        </div>
+        <Outlet />
       </MDXProvider>
 
       <Footer />
@@ -120,5 +119,9 @@ function App() {
 }
 
 function NotFound() {
-  return <NotfoundDocs />
+  return (
+    <DocsBase raw='Hello World!'>
+      <NotfoundDocs />
+    </DocsBase>
+  )
 }

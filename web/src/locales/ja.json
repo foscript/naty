@@ -9,18 +9,21 @@
           "seeTemplates": "テンプレートを見る"
         }
       }
+    },
+
+    "docs": {
+      "copyPrompt": {
+        "title": "AIに聞いてみましょう！",
+        "description": "あなたの言語でAIが変わりに説明してくれます。"
+      }
     }
   },
 
   "components": {
     "copyButton": {
-      "state": {
-        "default": "コピー",
-        "complete": "コピーしました！",
-        "error": "失敗しました..."
-      }
+      "state": "コピー"
     },
-
+    
     "header": {
       "searchTemplates": "探す"
     }

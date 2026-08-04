@@ -6,8 +6,6 @@ import { Copy, CopyCheck, CopyX } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useEffect, useRef, useState } from 'react'
 
-// Types
-import type { ParseKeys } from 'i18next'
 import type { IconType } from 'react-icons/lib'
 
 type CopyButton = React.ComponentProps<typeof Button> & {
@@ -17,10 +15,10 @@ type CopyButton = React.ComponentProps<typeof Button> & {
 
 // Copy State
 type CopyState = 'default' | 'complete' | 'error'
-const copyStateMap: Record<CopyState, { localeKey: ParseKeys, Icon: IconType }> = {
-  default: { localeKey: 'components.copyButton.state.default', Icon: Copy },
-  complete: { localeKey: 'components.copyButton.state.complete', Icon: CopyCheck },
-  error: { localeKey: 'components.copyButton.state.error', Icon: CopyX }
+const copyStateMap: Record<CopyState, { Icon: IconType }> = {
+  default: { Icon: Copy },
+  complete: { Icon: CopyCheck },
+  error: { Icon: CopyX }
 } as const
 
 export function CopyButton({ children, show, ...props }: CopyButton) {
@@ -38,8 +36,8 @@ export function CopyButton({ children, show, ...props }: CopyButton) {
   }, [])
 
   // Set copy button state
-  const { localeKey, Icon } = copyStateMap[copyState]
-  const label = show ? children : t(localeKey)
+  const { Icon } = copyStateMap[copyState]
+  const label = show ? children : t('components.copyButton.state')
 
   async function handleCopy() {
     // Already copied
