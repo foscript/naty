@@ -33,11 +33,11 @@ function App() {
       <Header />
 
       <Section className='flex-col gap-10 text-center bg-background pt-20 sm:pt-25 flex justify-center items-center'>
-        <div className='flex flex-col gap-4 items-center'>
+        <div className='text-left sm:text-center items-center flex flex-col gap-2'>
           <h1 className='text-3xl sm:text-[42px] font-semibold text-balance'>
             <Trans
               i18nKey='routes.index.section.first.title'
-              components={[<span className='bg-muted px-2 rounded-md' key='0'></span>]}
+              components={[<span className='bg-muted px-1' key='0'></span>]}
             />
           </h1>
 
@@ -46,7 +46,7 @@ function App() {
           </h2>
         </div>
 
-        <div className='flex gap-4'>
+        <div className='flex gap-4 flex-col w-full sm:flex-row sm:w-auto'>
           <Button className='px-2.5 py-4.5' asChild>
             <Link to='/'>
               {t('routes.index.section.first.seeTemplates')}
@@ -62,11 +62,11 @@ function App() {
         </div>
       </Section>
 
-      <Section className='grid sm:grid-cols-3 grid-cols-2 gap-7.5 md:px-25 px-10'>
-        <img alt='Sample Image' className='rounded-2xl col-span-2' src='https://placehold.co/1366x768/gray/white' />
-        <img alt='Sample Image' className='rounded-2xl self-end col-span-2 md:col-span-1' src='https://placehold.co/600x700/gray/white' />
-        <img alt='Sample Image' className='rounded-2xl col-span-2 md:col-span-1 order-1 md:order-0' src='https://placehold.co/600x700/gray/white' />
-        <img alt='Sample Image' className='rounded-2xl col-span-2' src='https://placehold.co/1366x768/gray/white' />
+      <Section className='grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-10 lg:px-10 lg:w-[80%] mx-auto justify-items-center'>
+        <img alt='Sample Image' className='rounded-lg sm:rounded-2xl' src='https://placehold.co/1366x768/gray/white' />
+        <img alt='Sample Image' className='rounded-lg sm:rounded-2xl' src='https://placehold.co/1366x768/gray/white' />
+        <img alt='Sample Image' className='rounded-lg sm:rounded-2xl' src='https://placehold.co/1366x768/gray/white' />
+        <img alt='Sample Image' className='rounded-lg sm:rounded-2xl' src='https://placehold.co/1366x768/gray/white' />
       </Section>
 
       <Footer />
