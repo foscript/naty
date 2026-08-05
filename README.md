@@ -19,7 +19,7 @@ The easiest-to-use template ecosystem
 1. Run `npm create naty@latest`
 2. Configure project settings.
 3. Run `cd "Project Name"` to move to the project directory.
-4. Run `npm run dev` to start develop!
+4. Start develop!
 
 <br>
 

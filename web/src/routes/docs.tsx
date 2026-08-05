@@ -4,7 +4,7 @@ import { type LinkProps, Link } from '@tanstack/react-router'
 // Components
 import NotfoundDocs from '@/docs/notfound.mdx'
 import notFoundDocsRaw from '@/docs/notfound.mdx?mdxRaw'
-import { DocsBase } from '@/components/docsBase'
+import { DocsTemplate } from '@/components/docsTemplate'
 import { MDXProvider } from '@mdx-js/react'
 import { RootTemplate } from '@/components/rootTemplate'
 import { Header } from '@/components/header'
@@ -121,8 +121,8 @@ function App() {
 
 function NotFound() {
   return (
-    <DocsBase raw={notFoundDocsRaw}>
+    <DocsTemplate raw={notFoundDocsRaw}>
       <NotfoundDocs />
-    </DocsBase>
+    </DocsTemplate>
   )
 }

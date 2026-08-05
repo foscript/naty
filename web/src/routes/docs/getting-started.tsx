@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { DocsBase } from '@/components/docsBase'
+import { DocsTemplate } from '@/components/docsTemplate'
 import Docs from '@/docs/getting-started.mdx'
 import docsRaw from '@/docs/getting-started.mdx?mdxRaw'
 
@@ -9,8 +9,8 @@ export const Route = createFileRoute('/docs/getting-started')({
 
 function App() {
   return (
-    <DocsBase raw={docsRaw}>
+    <DocsTemplate raw={docsRaw}>
       <Docs />
-    </DocsBase>
+    </DocsTemplate>
   )
 }

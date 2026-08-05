@@ -4,7 +4,7 @@ import { CopyButton } from "@/components/copyButton"
 import { Link, useLocation } from '@tanstack/react-router'
 import { docsOrder } from "@/routes/docs"
 
-export function DocsBase({ children, raw }: { children: React.ReactNode, raw: string }) {
+export function DocsTemplate({ children, raw }: { children: React.ReactNode, raw: string }) {
   const { t } = useTranslation()
   const { pathname } = useLocation()
 
@@ -21,10 +21,12 @@ export function DocsBase({ children, raw }: { children: React.ReactNode, raw: st
 
   // Set Copy Prompt
   const copyPrompt = `# You are an explainer for the documentation.
+${nextDocs && `The user's next page is ${nextDocs.title}`}
 
 ## Please explain the documentation according to the following rules:
 - Explain in the user's language.
 - If the user asks a question, prioritize answering it based on the documentation.
+- If there is a subsequent page, please proactively ask, "Would you like me to explain that page?"
 
 ## The documentation is as follows:
 ${raw}`
