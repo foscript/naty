@@ -21,8 +21,6 @@ export function DocsBase({ children, raw }: { children: React.ReactNode, raw: st
 
   // Set Copy Prompt
   const copyPrompt = `# You are an explainer for the documentation.
-The user is currently at ${pathname}.
-The next section is ${nextDocs?.link || 'none'}.
 
 ## Please explain the documentation according to the following rules:
 - Explain in the user's language.

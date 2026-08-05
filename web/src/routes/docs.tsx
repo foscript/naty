@@ -93,7 +93,7 @@ const mdxComponents = {
   },
 
   code: ({ children }: React.ComponentPropsWithoutRef<'code'>) => (
-    <code className='bg-muted px-2 py-1 rounded-md'>
+    <code className='bg-muted p-1 rounded-sm'>
       {children}
     </code>
   ),

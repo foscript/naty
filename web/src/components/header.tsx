@@ -14,7 +14,7 @@ import { Button } from '@/components/shadcn/ui/button'
 function NavLink({ ...props }: { className?: string, to: LinkProps['to'], children: React.ReactNode }) {
   return (
     <Link
-      activeProps={{ className: 'text-sidebar-primary pointer-events-none' }}
+      activeProps={{ className: 'text-foreground pointer-events-none' }}
       inactiveProps={{ className: 'text-muted-foreground' }}
       {...props}
     />
@@ -24,11 +24,11 @@ function NavLink({ ...props }: { className?: string, to: LinkProps['to'], childr
 const navLinkMap: { to: LinkProps['to'], label: string }[] = [
   { to: '/', label: 'Home' },
   { to: '/docs', label: 'Docs' },
-  { to: '/templates' as LinkProps['to'], label: 'Templates' },
-  { to: '/licence' as LinkProps['to'], label: 'Licence' },
+  { to: '/templates', label: 'Templates' },
+  { to: '/registration', label: 'Registration' },
 ]
 
-export function Header({ fixed, ...props }: { fixed?: boolean } & React.ComponentPropsWithoutRef<'header'>) {
+export function Header({ fixed }: { fixed?: boolean } & React.ComponentPropsWithoutRef<'header'>) {
   const { t } = useTranslation()
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const isSm = useMediaQuery('(min-width: 640px)')
@@ -40,7 +40,7 @@ export function Header({ fixed, ...props }: { fixed?: boolean } & React.Componen
   }, [isSm, isOpen])
 
   return (
-    <div className={cn(fixed ? 'fixed' : 'sticky', isOpen && 'h-screen', 'z-100 top-0 w-full flex flex-col')} {...props}>
+    <div className={cn(fixed ? 'fixed' : 'sticky', isOpen && 'h-screen', 'z-100 top-0 w-full flex flex-col')}>
       <header className='border-b px-3 sm:px-6 py-3 flex items-center bg-background'>
         <div className='items-center flex'>
           {isSm ? (

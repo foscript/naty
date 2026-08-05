@@ -9,11 +9,25 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TemplatesRouteImport } from './routes/templates'
+import { Route as RegistrationRouteImport } from './routes/registration'
 import { Route as DocsRouteImport } from './routes/docs'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DocsIndexRouteImport } from './routes/docs/index'
 import { Route as DocsGettingStartedRouteImport } from './routes/docs/getting-started'
+import { Route as DocsTutorialIndexRouteImport } from './routes/docs/tutorial/index'
+import { Route as DocsTutorialCreateAProjectRouteImport } from './routes/docs/tutorial/create-a-project'
 
+const TemplatesRoute = TemplatesRouteImport.update({
+  id: '/templates',
+  path: '/templates',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegistrationRoute = RegistrationRouteImport.update({
+  id: '/registration',
+  path: '/registration',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DocsRoute = DocsRouteImport.update({
   id: '/docs',
   path: '/docs',
@@ -34,40 +48,103 @@ const DocsGettingStartedRoute = DocsGettingStartedRouteImport.update({
   path: '/getting-started',
   getParentRoute: () => DocsRoute,
 } as any)
+const DocsTutorialIndexRoute = DocsTutorialIndexRouteImport.update({
+  id: '/tutorial/',
+  path: '/tutorial/',
+  getParentRoute: () => DocsRoute,
+} as any)
+const DocsTutorialCreateAProjectRoute =
+  DocsTutorialCreateAProjectRouteImport.update({
+    id: '/tutorial/create-a-project',
+    path: '/tutorial/create-a-project',
+    getParentRoute: () => DocsRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/docs': typeof DocsRouteWithChildren
+  '/registration': typeof RegistrationRoute
+  '/templates': typeof TemplatesRoute
   '/docs/getting-started': typeof DocsGettingStartedRoute
   '/docs/': typeof DocsIndexRoute
+  '/docs/tutorial/create-a-project': typeof DocsTutorialCreateAProjectRoute
+  '/docs/tutorial/': typeof DocsTutorialIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/registration': typeof RegistrationRoute
+  '/templates': typeof TemplatesRoute
   '/docs/getting-started': typeof DocsGettingStartedRoute
   '/docs': typeof DocsIndexRoute
+  '/docs/tutorial/create-a-project': typeof DocsTutorialCreateAProjectRoute
+  '/docs/tutorial': typeof DocsTutorialIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/docs': typeof DocsRouteWithChildren
+  '/registration': typeof RegistrationRoute
+  '/templates': typeof TemplatesRoute
   '/docs/getting-started': typeof DocsGettingStartedRoute
   '/docs/': typeof DocsIndexRoute
+  '/docs/tutorial/create-a-project': typeof DocsTutorialCreateAProjectRoute
+  '/docs/tutorial/': typeof DocsTutorialIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/docs' | '/docs/getting-started' | '/docs/'
+  fullPaths:
+    | '/'
+    | '/docs'
+    | '/registration'
+    | '/templates'
+    | '/docs/getting-started'
+    | '/docs/'
+    | '/docs/tutorial/create-a-project'
+    | '/docs/tutorial/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/docs/getting-started' | '/docs'
-  id: '__root__' | '/' | '/docs' | '/docs/getting-started' | '/docs/'
+  to:
+    | '/'
+    | '/registration'
+    | '/templates'
+    | '/docs/getting-started'
+    | '/docs'
+    | '/docs/tutorial/create-a-project'
+    | '/docs/tutorial'
+  id:
+    | '__root__'
+    | '/'
+    | '/docs'
+    | '/registration'
+    | '/templates'
+    | '/docs/getting-started'
+    | '/docs/'
+    | '/docs/tutorial/create-a-project'
+    | '/docs/tutorial/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DocsRoute: typeof DocsRouteWithChildren
+  RegistrationRoute: typeof RegistrationRoute
+  TemplatesRoute: typeof TemplatesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/templates': {
+      id: '/templates'
+      path: '/templates'
+      fullPath: '/templates'
+      preLoaderRoute: typeof TemplatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/registration': {
+      id: '/registration'
+      path: '/registration'
+      fullPath: '/registration'
+      preLoaderRoute: typeof RegistrationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/docs': {
       id: '/docs'
       path: '/docs'
@@ -96,17 +173,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DocsGettingStartedRouteImport
       parentRoute: typeof DocsRoute
     }
+    '/docs/tutorial/': {
+      id: '/docs/tutorial/'
+      path: '/tutorial'
+      fullPath: '/docs/tutorial/'
+      preLoaderRoute: typeof DocsTutorialIndexRouteImport
+      parentRoute: typeof DocsRoute
+    }
+    '/docs/tutorial/create-a-project': {
+      id: '/docs/tutorial/create-a-project'
+      path: '/tutorial/create-a-project'
+      fullPath: '/docs/tutorial/create-a-project'
+      preLoaderRoute: typeof DocsTutorialCreateAProjectRouteImport
+      parentRoute: typeof DocsRoute
+    }
   }
 }
 
 interface DocsRouteChildren {
   DocsGettingStartedRoute: typeof DocsGettingStartedRoute
   DocsIndexRoute: typeof DocsIndexRoute
+  DocsTutorialCreateAProjectRoute: typeof DocsTutorialCreateAProjectRoute
+  DocsTutorialIndexRoute: typeof DocsTutorialIndexRoute
 }
 
 const DocsRouteChildren: DocsRouteChildren = {
   DocsGettingStartedRoute: DocsGettingStartedRoute,
   DocsIndexRoute: DocsIndexRoute,
+  DocsTutorialCreateAProjectRoute: DocsTutorialCreateAProjectRoute,
+  DocsTutorialIndexRoute: DocsTutorialIndexRoute,
 }
 
 const DocsRouteWithChildren = DocsRoute._addFileChildren(DocsRouteChildren)
@@ -114,6 +209,8 @@ const DocsRouteWithChildren = DocsRoute._addFileChildren(DocsRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DocsRoute: DocsRouteWithChildren,
+  RegistrationRoute: RegistrationRoute,
+  TemplatesRoute: TemplatesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
