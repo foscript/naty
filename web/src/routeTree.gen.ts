@@ -10,7 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TemplatesRouteImport } from './routes/templates'
-import { Route as RegistrationRouteImport } from './routes/registration'
+import { Route as InfomationRouteImport } from './routes/infomation'
 import { Route as DocsRouteImport } from './routes/docs'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DocsIndexRouteImport } from './routes/docs/index'
@@ -23,9 +23,9 @@ const TemplatesRoute = TemplatesRouteImport.update({
   path: '/templates',
   getParentRoute: () => rootRouteImport,
 } as any)
-const RegistrationRoute = RegistrationRouteImport.update({
-  id: '/registration',
-  path: '/registration',
+const InfomationRoute = InfomationRouteImport.update({
+  id: '/infomation',
+  path: '/infomation',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DocsRoute = DocsRouteImport.update({
@@ -63,7 +63,7 @@ const DocsTutorialCreateAProjectRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/docs': typeof DocsRouteWithChildren
-  '/registration': typeof RegistrationRoute
+  '/infomation': typeof InfomationRoute
   '/templates': typeof TemplatesRoute
   '/docs/getting-started': typeof DocsGettingStartedRoute
   '/docs/': typeof DocsIndexRoute
@@ -72,7 +72,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/registration': typeof RegistrationRoute
+  '/infomation': typeof InfomationRoute
   '/templates': typeof TemplatesRoute
   '/docs/getting-started': typeof DocsGettingStartedRoute
   '/docs': typeof DocsIndexRoute
@@ -83,7 +83,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/docs': typeof DocsRouteWithChildren
-  '/registration': typeof RegistrationRoute
+  '/infomation': typeof InfomationRoute
   '/templates': typeof TemplatesRoute
   '/docs/getting-started': typeof DocsGettingStartedRoute
   '/docs/': typeof DocsIndexRoute
@@ -95,7 +95,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/docs'
-    | '/registration'
+    | '/infomation'
     | '/templates'
     | '/docs/getting-started'
     | '/docs/'
@@ -104,7 +104,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/registration'
+    | '/infomation'
     | '/templates'
     | '/docs/getting-started'
     | '/docs'
@@ -114,7 +114,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/docs'
-    | '/registration'
+    | '/infomation'
     | '/templates'
     | '/docs/getting-started'
     | '/docs/'
@@ -125,7 +125,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DocsRoute: typeof DocsRouteWithChildren
-  RegistrationRoute: typeof RegistrationRoute
+  InfomationRoute: typeof InfomationRoute
   TemplatesRoute: typeof TemplatesRoute
 }
 
@@ -138,11 +138,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TemplatesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/registration': {
-      id: '/registration'
-      path: '/registration'
-      fullPath: '/registration'
-      preLoaderRoute: typeof RegistrationRouteImport
+    '/infomation': {
+      id: '/infomation'
+      path: '/infomation'
+      fullPath: '/infomation'
+      preLoaderRoute: typeof InfomationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/docs': {
@@ -209,7 +209,7 @@ const DocsRouteWithChildren = DocsRoute._addFileChildren(DocsRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DocsRoute: DocsRouteWithChildren,
-  RegistrationRoute: RegistrationRoute,
+  InfomationRoute: InfomationRoute,
   TemplatesRoute: TemplatesRoute,
 }
 export const routeTree = rootRouteImport

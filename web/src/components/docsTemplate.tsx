@@ -1,7 +1,8 @@
-import { Item, ItemActions, ItemContent, ItemDescription, ItemTitle } from "@/components/shadcn/ui/item"
+import { Item, ItemActions, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/shadcn/ui/item"
 import { useTranslation } from "react-i18next"
 import { CopyButton } from "@/components/copyButton"
 import { Link, useLocation } from '@tanstack/react-router'
+import { Bot } from 'lucide-react'
 import { docsOrder } from "@/routes/docs"
 
 export function DocsTemplate({ children, raw }: { children: React.ReactNode, raw: string }) {
@@ -34,8 +35,15 @@ ${raw}`
   return (
     <div className='flex flex-col gap-5 sm:px-10 px-5 pt-7.5 pb-10'>
       <Item variant='muted' className='mb-5'>
+        <ItemMedia variant='image'>
+          <Bot />
+        </ItemMedia>
+
         <ItemContent>
-          <ItemTitle>{t("routes.docs.copyPrompt.title")}</ItemTitle>
+          <ItemTitle>
+            {t("routes.docs.copyPrompt.title")}
+          </ItemTitle>
+
           <ItemDescription>
             {t("routes.docs.copyPrompt.description")}
           </ItemDescription>

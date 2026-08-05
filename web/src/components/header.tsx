@@ -25,7 +25,7 @@ const navLinkMap: { to: LinkProps['to'], label: string }[] = [
   { to: '/', label: 'Home' },
   { to: '/docs', label: 'Docs' },
   { to: '/templates', label: 'Templates' },
-  { to: '/registration', label: 'Registration' },
+  { to: '/infomation', label: 'Infomation' },
 ]
 
 export function Header({ fixed }: { fixed?: boolean } & React.ComponentPropsWithoutRef<'header'>) {
@@ -67,7 +67,7 @@ export function Header({ fixed }: { fixed?: boolean } & React.ComponentPropsWith
           </Button>
 
           <Button asChild>
-            <Link to='/'>
+            <Link to='/templates'>
               <Search />
               {t('components.header.searchTemplates')}
             </Link>

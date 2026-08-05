@@ -48,7 +48,7 @@ function App() {
 
         <div className='flex gap-4 flex-col w-full sm:flex-row sm:w-auto'>
           <Button className='px-2.5 py-4.5' asChild>
-            <Link to='/'>
+            <Link to='/templates'>
               {t('routes.index.section.first.seeTemplates')}
             </Link>
           </Button>
