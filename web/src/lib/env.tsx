@@ -7,6 +7,7 @@ type Env = {
   social?: {
     link: string,
     icon: IconType,
+    name: string
   }[]
 }
 
@@ -15,17 +16,20 @@ export const env: Env = {
   social: [
     {
       link: 'https://github.com/foscript',
-      icon: FaGithub
+      icon: FaGithub,
+      name: 'GitHub'
     },
 
     {
       link: 'https://www.instagram.com/foscript',
-      icon: FaInstagram
+      icon: FaInstagram,
+      name: 'Instagram'
     },
 
     {
       link: 'https://x.com/foscript',
-      icon: FaXTwitter
+      icon: FaXTwitter,
+      name: 'X'
     }
   ]
 } as const

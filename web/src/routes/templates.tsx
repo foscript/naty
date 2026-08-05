@@ -12,6 +12,10 @@ function RouteComponent() {
     <RootTemplate>
       <Header />
 
+      <main>
+        
+      </main>
+
       <Footer />
     </RootTemplate>
   )

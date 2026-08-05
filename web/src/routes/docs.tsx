@@ -111,7 +111,9 @@ function App() {
       <Header />
 
       <MDXProvider components={mdxComponents}>
-        <Outlet />
+        <main>
+          <Outlet />
+        </main>
       </MDXProvider>
 
       <Footer />
