@@ -38,7 +38,7 @@ function App() {
             <h1 className='text-3xl sm:text-[42px] font-semibold text-balance'>
               <Trans
                 i18nKey='routes.index.section.first.title'
-                components={[<span className='bg-muted px-1' key='0'></span>]}
+                components={[<span className='bg-foreground text-background px-1' key='0'></span>]}
               />
             </h1>
 
@@ -71,7 +71,7 @@ function App() {
         </Section>
       </main>
 
-      <Footer />
+      <Footer smart />
     </RootTemplate>
   )
 }

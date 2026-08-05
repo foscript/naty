@@ -1,5 +1,6 @@
 import { cn } from '@/lib/shadcn/utils'
 import { Link, type LinkProps } from '@tanstack/react-router'
+import { env } from '@/lib/env'
 
 // Hooks
 import { useState, useEffect } from 'react'
@@ -60,7 +61,7 @@ export function Header({ fixed }: { fixed?: boolean } & React.ComponentPropsWith
 
         <div className='items-center gap-2 sm:gap-4 ml-auto flex'>
           <Button variant='outline' asChild>
-            <a href='https://github.com/foscript/naty' target='_blank' rel='noopener noreferrer'>
+            <a href={env.repositoryURL} target='_blank' rel='noopener noreferrer'>
               <FaGithub />
               GitHub
             </a>

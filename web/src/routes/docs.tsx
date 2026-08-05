@@ -78,7 +78,7 @@ const mdxComponents = {
     // Case URL
     if (/^https?:\/\/\S+/.test(href)) {
       return (
-        <a href={href} target='_blank' rel='noopener noreferrer' className='text-blue-500' {...props}>
+        <a href={href} target='_blank' rel='noopener noreferrer' aria-label='Go to an external link' className='text-blue-500' {...props}>
           {children}
         </a>
       )
@@ -86,16 +86,16 @@ const mdxComponents = {
 
     // Case Others
     return (
-      <Link to={href as any} {...props} className='text-blue-500'>
+      <Link to={href as any} aria-label='Skip to site links' {...props} className='text-blue-500'>
         {children}
       </Link>
     )
   },
 
   code: ({ children }: React.ComponentPropsWithoutRef<'code'>) => (
-    <code className='bg-muted p-1 rounded-sm'>
+    <span className='bg-muted p-1 rounded-sm'>
       {children}
-    </code>
+    </span>
   ),
 
   p: ({ children }: React.ComponentPropsWithoutRef<'p'>) => (

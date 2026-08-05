@@ -6,7 +6,7 @@
 /* Settings */
 @layer base {
   * {
-    @apply delay-75 transition-all duration-75 ease-in-out;
+    @apply delay-75 transition-all duration-75 ease-in-out selection:bg-foreground selection:text-background;
   }
 }
 

@@ -4,7 +4,8 @@ import { FaXTwitter } from 'react-icons/fa6'
 
 type Env = {
   appName: string,
-  social?: {
+  repositoryURL: string,
+  social: {
     link: string,
     icon: IconType,
     name: string
@@ -13,6 +14,7 @@ type Env = {
 
 export const env: Env = {
   appName: 'Naty',
+  repositoryURL: 'https://github.com/foscript/naty',
   social: [
     {
       link: 'https://github.com/foscript',
