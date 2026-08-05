@@ -21,7 +21,7 @@ export function DocsTemplate({ children, raw }: { children: React.ReactNode, raw
 
   // Set Copy Prompt
   const copyPrompt = `# You are an explainer for the documentation.
-${nextDocs && `The user's next page is ${nextDocs.title}`}
+The user's next page is ${nextDocs?.title || 'nothing'}
 
 ## Please explain the documentation according to the following rules:
 - Explain in the user's language.
