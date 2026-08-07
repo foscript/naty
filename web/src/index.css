@@ -3,14 +3,13 @@
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/noto-sans";
 
-/* Settings */
+/* Original Options */
 @layer base {
   * {
     @apply delay-75 transition-all duration-75 ease-in-out selection:bg-foreground selection:text-background;
   }
 }
 
-/* Shadcn UI Settings */
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

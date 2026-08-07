@@ -1,6 +1,6 @@
 import { cn } from '@/lib/shadcn/utils'
-import { Link, type LinkProps } from '@tanstack/react-router'
 import { env } from '@/lib/env'
+import { Link, type LinkProps } from '@tanstack/react-router'
 
 // Hooks
 import { useState, useEffect } from 'react'
@@ -8,32 +8,35 @@ import { useMediaQuery } from 'usehooks-ts'
 import { useTranslation } from 'react-i18next'
 
 // Components
-import { EllipsisVertical, X, Search } from 'lucide-react'
-import { FaGithub } from 'react-icons/fa'
 import { Button } from '@/components/shadcn/ui/button'
+import { FaGithub } from 'react-icons/fa'
+import { EllipsisVertical, X, Search } from 'lucide-react'
 
-function NavLink({ ...props }: { className?: string, to: LinkProps['to'], children: React.ReactNode }) {
+function NavLink({ link, label, ...props }: { link: LinkProps['to'], label: string, children: React.ReactNode, className?: string, }) {
   return (
     <Link
+      to={link}
+      aria-label={`Go ${label} page`}
+      {...props}
       activeProps={{ className: 'text-foreground pointer-events-none' }}
       inactiveProps={{ className: 'text-muted-foreground' }}
-      {...props}
     />
   )
 }
 
-const navLinkMap: { to: LinkProps['to'], label: string }[] = [
-  { to: '/', label: 'Home' },
-  { to: '/docs', label: 'Docs' },
-  { to: '/templates', label: 'Templates' },
-  { to: '/infomation', label: 'Infomation' },
+const navLinkMap: { link: LinkProps['to'], label: string }[] = [
+  { link: '/', label: 'Home' },
+  { link: '/docs', label: 'Docs' },
+  { link: '/templates', label: 'Templates' },
+  { link: '/infomation', label: 'Infomation' },
 ]
 
-export function Header({ fixed }: { fixed?: boolean } & React.ComponentPropsWithoutRef<'header'>) {
+export function Header() {
   const { t } = useTranslation()
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const isSm = useMediaQuery('(min-width: 640px)')
 
+  // If the menu remains empty in sm state
   useEffect(() => {
     if (isSm && isOpen) {
       setIsOpen(false)
@@ -41,25 +44,32 @@ export function Header({ fixed }: { fixed?: boolean } & React.ComponentPropsWith
   }, [isSm, isOpen])
 
   return (
-    <div className={cn(fixed ? 'fixed' : 'sticky', isOpen && 'h-screen', 'z-100 top-0 w-full flex flex-col')}>
-      <header className='border-b px-3 sm:px-6 py-3 flex items-center bg-background'>
+    <div className={cn(
+      'z-100 top-0 w-full flex flex-col sticky',
+      isOpen && 'h-screen'
+    )}>
+      <header className='border-b px-4 sm:px-6 py-4 flex items-center bg-background'>
         <div className='items-center flex'>
-          {isSm ? (
-            navLinkMap.map((link) => (
-              <Button key={link.label} variant='ghost' asChild>
-                <NavLink to={link.to}>
-                  {link.label}
-                </NavLink>
-              </Button>
-            ))
-          ) : isOpen ? (
-            <X className='size-6 cursor-pointer' onClick={() => setIsOpen(false)} />
-          ) : (
-            <EllipsisVertical className='size-6 cursor-pointer' onClick={() => setIsOpen(true)} />
+          {/* For sm (Nav Links) */}
+          {isSm && navLinkMap.map((link) => (
+            <Button key={link.label} variant='ghost' asChild>
+              <NavLink link={link.link} label={link.label}>
+                {link.label}
+              </NavLink>
+            </Button>
+          ))}
+
+          {/* For not sm (Menu Button) */}
+          {!isSm && (
+            isOpen ? (
+              <X className='size-6 cursor-pointer' onClick={() => setIsOpen(false)} />
+            ) : (
+              <EllipsisVertical className='size-6 cursor-pointer' onClick={() => setIsOpen(true)} />
+            )
           )}
         </div>
 
-        <div className='items-center gap-2 sm:gap-4 ml-auto flex'>
+        <div className='items-center gap-3 ml-auto flex'>
           <Button variant='outline' asChild>
             <a href={env.repositoryURL} target='_blank' rel='noopener noreferrer'>
               <FaGithub />
@@ -79,7 +89,7 @@ export function Header({ fixed }: { fixed?: boolean } & React.ComponentPropsWith
       {isOpen && (
         <div className='flex-1 flex flex-col gap-3 p-6 bg-background/90 shadow-none backdrop-blur'>
           {navLinkMap.map((link) => (
-            <NavLink to={link.to} className='text-2xl' key={link.to}>
+            <NavLink key={link.label} link={link.link} label={link.label} className='text-2xl'>
               {link.label}
             </NavLink>
           ))}

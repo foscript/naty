@@ -20,7 +20,9 @@ export const mdxRaw: () => Plugin = () => {
       return `${virtualPrefix}${filePath}`
     },
 
+    // Path derived from virtual prefix
     async load(id) {
+      // Check virtual prefix
       if (!id.startsWith(virtualPrefix)) return null
 
       // Get
@@ -28,6 +30,7 @@ export const mdxRaw: () => Plugin = () => {
       const mdxRaw = await fs.promises.readFile(filePath, 'utf-8')
 
       // Return as a module
+      // I am adding types to @/env.d.ts.
       return `export default ${JSON.stringify(mdxRaw)}`
     }
   }

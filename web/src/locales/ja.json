@@ -13,8 +13,8 @@
 
     "docs": {
       "copyPrompt": {
-        "title": "プロンプトをお試しください",
-        "description": "AIが変わりに分かりやすく説明してくれます。"
+        "title": "お試しください",
+        "description": "コピーするとAIがドキュメントを説明してくれます。"
       }
     }
   },

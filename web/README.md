@@ -10,6 +10,7 @@ A modern introductory website.
 ## Table of contents
 - [Quick Start](#quick-start)
 - [What is this?](#what-is-this)
+- [Key Technologies Used](#keytechnologies-used)
 
 <br>
 
@@ -21,5 +22,16 @@ A modern introductory website.
 <br>
 
 ## What is this?
-- This is the webpage for Project Naty.
-- We have achieved a simple, stylish finish for both the design and the code.
+This is the webpage for Project Naty.
+
+We have achieved a simple, stylish finish for both the design and the code.
+
+## Key Technologies Used
+- React
+- Vite
+- Tailwind CSS
+- Shadcn UI
+- Cloudflare Pages
+- Tanstack Router
+- TypeScript
+- MDX

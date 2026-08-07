@@ -5,7 +5,7 @@ import { FaXTwitter } from 'react-icons/fa6'
 type Env = {
   appName: string,
   repositoryURL: string,
-  social: {
+  social?: {
     link: string,
     icon: IconType,
     name: string
@@ -34,4 +34,4 @@ export const env: Env = {
       name: 'X'
     }
   ]
-} as const
+}

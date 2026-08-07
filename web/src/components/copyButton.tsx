@@ -19,7 +19,7 @@ const copyStateMap: Record<CopyState, { Icon: IconType }> = {
   default: { Icon: Copy },
   complete: { Icon: CopyCheck },
   error: { Icon: CopyX }
-} as const
+}
 
 export function CopyButton({ children, show, ...props }: CopyButton) {
   const [copyState, setCopyState] = useState<CopyState>('default')
