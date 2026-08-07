@@ -1,7 +1,10 @@
 {
-  "name": "naty-web",
+  "name": "test-web",
   "private": true,
   "type": "module",
+  "imports": {
+    "#/*": "./src/*"
+  },
   "scripts": {
     "dev": "vite dev --port 3000",
     "generate-routes": "tsr generate",
@@ -36,5 +39,13 @@
     "typescript": "^6.0.2",
     "vite": "^8.0.0",
     "wrangler": "^4.70.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "lightningcss",
+      "sharp",
+      "workerd"
+    ]
   }
 }

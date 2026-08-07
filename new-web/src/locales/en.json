@@ -1,0 +1,37 @@
+{
+  "routes": {
+    "index": {
+      "section": {
+        "first": {
+          "title": "The <0>easiest-to-use</0> template ecosystem",
+          "description": "No need to start from scratch. Let’s browse our diverse template options and find the perfect one for your needs!",
+          "gettingStarted": "Getting Started",
+          "seeTemplates": "See Templates"
+        }
+      }
+    },
+
+    "docs": {
+      "copyPrompt": {
+        "title": "Try the Copy Prompt feature",
+        "description": "AI that you like explains the documention."
+      }
+    }
+  },
+
+  "components": {
+    "copyButton": {
+      "state": "Copy"
+    },
+
+    "header": {
+      "searchTemplates": "Search"
+    }
+  },
+
+  "root": {
+    "notfoundPage": {
+      "message": "Page Not Found"
+    }
+  }
+}

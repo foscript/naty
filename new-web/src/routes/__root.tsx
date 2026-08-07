@@ -1,54 +1,32 @@
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
-import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
-import { TanStackDevtools } from '@tanstack/react-devtools'
+import { Outlet, createRootRoute } from '@tanstack/react-router'
 
-import appCss from '../styles.css?url'
+// Hooks
+import { useEffect } from 'react'
+import { useDarkMode } from 'usehooks-ts'
+
+// Components
+import { Toaster } from '@/components/shadcn/ui/sonner'
+import { RootTemplate } from '@/components/rootTemplate'
 
 export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      {
-        charSet: 'utf-8',
-      },
-      {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1',
-      },
-      {
-        title: 'TanStack Start Starter',
-      },
-    ],
-    links: [
-      {
-        rel: 'stylesheet',
-        href: appCss,
-      },
-    ],
-  }),
-  shellComponent: RootDocument,
+  component: App
 })
 
-function RootDocument({ children }: { children: React.ReactNode }) {
+function App() {
+  const { isDarkMode } = useDarkMode()
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add('dark')
+    } else {
+      document.body.classList.remove('dark')
+    }
+  }, [isDarkMode])
+
   return (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <TanStackDevtools
-          config={{
-            position: 'bottom-right',
-          }}
-          plugins={[
-            {
-              name: 'Tanstack Router',
-              render: <TanStackRouterDevtoolsPanel />,
-            },
-          ]}
-        />
-        <Scripts />
-      </body>
-    </html>
+      <RootTemplate>
+        <Outlet />
+        <Toaster />
+      </RootTemplate>
   )
 }
