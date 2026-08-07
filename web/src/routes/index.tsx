@@ -16,7 +16,7 @@ export const Route = createFileRoute('/')({
 function Section({ children, className, screen }: { children: React.ReactNode; className?: string, screen?: boolean }) {
   return (
     <section className={cn(
-      'w-full px-6 pb-20 sm:pb-25',
+      'w-full px-8 sm:px-12',
       screen && 'flex justify-center items-center min-h-svh',
       className
     )}>
@@ -32,8 +32,8 @@ function App() {
     <RootTemplate>
       <Header />
 
-      <main>
-        <Section className='flex-col gap-10 text-center bg-background pt-20 sm:pt-25 flex justify-center items-center'>
+      <main className='flex flex-col gap-20 sm:gap-25 py-20 sm:py-25'>
+        <Section className='flex-col gap-10 text-center bg-background flex justify-center items-center'>
           <div className='text-left sm:text-center items-center flex flex-col gap-2'>
             <h1 className='text-3xl sm:text-[42px] font-semibold text-balance'>
               <Trans
@@ -63,7 +63,7 @@ function App() {
           </div>
         </Section>
 
-        <Section className='grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-10 lg:px-10 lg:w-[80%] mx-auto justify-items-center'>
+        <Section className='grid grid-cols-1 sm:grid-cols-2 gap-7.5 md:gap-10 md:px-10 md:w-[90%] lg:w-[80%] mx-auto justify-items-center'>
           <img alt='Sample Image' fetchPriority="high" width={1366} height={768} className='rounded-lg sm:rounded-2xl' src='https://placehold.co/1366x768/gray/white' />
           <img alt='Sample Image' fetchPriority="high" width={1366} height={768} className='rounded-lg sm:rounded-2xl' src='https://placehold.co/1366x768/gray/white' />
           <img alt='Sample Image' fetchPriority="high" width={1366} height={768} className='rounded-lg sm:rounded-2xl' src='https://placehold.co/1366x768/gray/white' />

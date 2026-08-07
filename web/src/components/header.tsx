@@ -18,7 +18,7 @@ function NavLink({ link, label, ...props }: { link: LinkProps['to'], label: stri
       to={link}
       aria-label={`Go ${label} page`}
       {...props}
-      activeProps={{ className: 'text-foreground pointer-events-none' }}
+      activeProps={{ className: 'text-primary pointer-events-none' }}
       inactiveProps={{ className: 'text-muted-foreground' }}
     />
   )

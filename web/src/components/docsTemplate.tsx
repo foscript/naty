@@ -37,7 +37,7 @@ The user's next page is ${nextDocs?.title || 'nothing'}
 ${raw}`
 
   return (
-    <div className='flex flex-col gap-10 p-7 sm:p-10'>
+    <div className='flex flex-col gap-10 px-7 py-10 md:px-15'>
       <Item variant='muted'>
         <ItemMedia variant='image'>
           <Bot />

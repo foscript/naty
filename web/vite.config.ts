@@ -1,4 +1,3 @@
-import path from 'path'
 import { defineConfig } from 'vite'
 
 // Plugins
@@ -25,8 +24,6 @@ export default defineConfig({
   ],
 
   resolve: {
-    alias: {
-      "@": path.resolve(import.meta.dirname, "./src")
-    }
+    tsconfigPaths: true 
   }
 })
