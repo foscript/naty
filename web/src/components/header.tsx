@@ -1,6 +1,7 @@
 import { cn } from '@/lib/shadcn/utils'
 import { env } from '@/lib/env'
 import { Link, type LinkProps } from '@tanstack/react-router'
+import { buttonVariants } from '@/components/shadcn/ui/button'
 
 // Hooks
 import { useState, useEffect } from 'react'
@@ -8,7 +9,6 @@ import { useMediaQuery } from 'usehooks-ts'
 import { useTranslation } from 'react-i18next'
 
 // Components
-import { Button } from '@/components/shadcn/ui/button'
 import { FaGithub } from 'react-icons/fa'
 import { EllipsisVertical, X, Search } from 'lucide-react'
 
@@ -52,11 +52,14 @@ export function Header() {
         <div className='items-center flex'>
           {/* For sm (Nav Links) */}
           {isSm && navLinkMap.map((link) => (
-            <Button key={link.label} variant='ghost' asChild>
-              <NavLink link={link.link} label={link.label}>
-                {link.label}
-              </NavLink>
-            </Button>
+            <NavLink
+              link={link.link}
+              label={link.label} 
+              key={link.link} 
+              className={buttonVariants({ variant: 'ghost' })}
+            >
+              {link.label}
+            </NavLink>
           ))}
 
           {/* For not sm (Menu Button) */}
@@ -70,19 +73,15 @@ export function Header() {
         </div>
 
         <div className='items-center gap-3 ml-auto flex'>
-          <Button variant='outline' asChild>
-            <a href={env.repositoryURL} target='_blank' rel='noopener noreferrer'>
-              <FaGithub />
-              GitHub
-            </a>
-          </Button>
+          <a href={env.repositoryURL} target='_blank' rel='noopener noreferrer' className={buttonVariants({ variant: 'outline' })}>
+            <FaGithub />
+            GitHub
+          </a>
 
-          <Button asChild>
-            <Link to='/templates'>
-              <Search />
-              {t('components.header.searchTemplates')}
-            </Link>
-          </Button>
+          <Link to='/templates' className={buttonVariants()}>
+            <Search />
+            {t('components.header.searchTemplates')}
+          </Link>
         </div>
       </header>
 

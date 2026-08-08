@@ -1,23 +1,30 @@
 import type { Plugin } from 'vite'
 import fs from 'node:fs'
 
-export const mdxRaw: () => Plugin = () => {
-  const virtualPrefix = '\0mdxRaw:'
+const virtualPrefix = '\0mdxRaw:'
+const query = '?mdxRaw'
 
+export const mdxRaw: () => Plugin = () => {
   return {
     name: 'mdxRaw',
     enforce: 'pre',
 
-    resolveId(id) {
-      // Check ?mdxRaw query
-      if (!id.endsWith('?mdxRaw')) return null
+    async resolveId(id, importer) {
+      // Check query
+      if (!id.endsWith(query)) return null
 
-      // Check .mdx extension
-      const filePath = id.slice(0, -'?mdxRaw'.length)
+      const filePath = id.slice(0, query.length)
+
+      // Check extension
       if (!filePath.endsWith('.mdx')) return null
 
-      // Return virtual path
-      return `${virtualPrefix}${filePath}`
+      // Resolve aliases and relative imports through Vite
+      const resolvedPath = await this.resolve(filePath, importer, { skipSelf: true })
+
+      // Check existence
+      if (!resolvedPath) return null
+
+      return `${virtualPrefix}${resolvedPath.id}`
     },
 
     // Path derived from virtual prefix
@@ -25,7 +32,6 @@ export const mdxRaw: () => Plugin = () => {
       // Check virtual prefix
       if (!id.startsWith(virtualPrefix)) return null
 
-      // Get
       const filePath = id.slice(virtualPrefix.length)
       const mdxRaw = await fs.promises.readFile(filePath, 'utf-8')
 

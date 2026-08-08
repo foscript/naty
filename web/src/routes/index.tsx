@@ -1,10 +1,10 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { cn } from '@/lib/shadcn/utils'
 import { Trans, useTranslation } from 'react-i18next'
+import { buttonVariants } from '@/components/shadcn/ui/button'
 
 // Components
 import { Book } from 'lucide-react'
-import { Button } from '@/components/shadcn/ui/button'
 import { RootTemplate } from '@/components/rootTemplate'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
@@ -48,18 +48,20 @@ function App() {
           </div>
 
           <div className='flex gap-4 flex-col w-full sm:flex-row sm:w-auto'>
-            <Button className='px-2.5 py-4.5' asChild>
-              <Link to='/templates'>
-                {t('routes.index.section.first.seeTemplates')}
-              </Link>
-            </Button>
+            <Link to='/templates' className={cn(
+              'px-2.5 py-4.5',
+              buttonVariants()
+            )}>
+              {t('routes.index.section.first.seeTemplates')}
+            </Link>
 
-            <Button className='px-2.5 py-4.5' variant='outline' asChild>
-              <Link to='/docs'>
-                <Book className='mr-2 h-4 w-4' />
-                {t('routes.index.section.first.gettingStarted')}
-              </Link>
-            </Button>
+            <Link className={cn(
+              'px-2.5 py-4.5',
+              buttonVariants({ variant: 'outline' })
+            )} to='/docs'>
+              <Book />
+              {t('routes.index.section.first.gettingStarted')}
+            </Link>
           </div>
         </Section>
 
