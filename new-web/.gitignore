@@ -1,5 +1,4 @@
 # Unnecessary
-*.log
 node_modules/
 dist/
 .tanstack/
