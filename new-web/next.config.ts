@@ -6,8 +6,7 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts')
 const config: NextConfig = {
   reactCompiler: true,
   output: 'export',
-  reactStrictMode: true,
-  trailingSlash:  true
+  reactStrictMode: true
 }
 
 export default withNextIntl(config)
