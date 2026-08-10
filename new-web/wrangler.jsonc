@@ -1,7 +1,11 @@
 {
+  "$schema": "node_modules/wrangler/config-schema.json",
   "name": "naty",
   "compatibility_date": "2026-08-10",
   "assets": {
     "directory": "./out"
-  }
+  },
+
+  "workers_dev": true,
+  "preview_urls": true
 }
