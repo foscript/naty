@@ -5,6 +5,9 @@ import { config } from '@/lib/config'
 // Type
 import type { Metadata } from "next"
 
+// Component
+import { NextIntlClientProvider } from 'next-intl'
+
 export async function generateStaticParams() {
   return config.locales.map((locale) => ({ locale }))
 }
@@ -26,5 +29,9 @@ export default async function Layout({ children, params }: LayoutProps<"/[locale
     redirect(`/${defaultLocale}`)
   }
 
-  return children
+  return (
+    <NextIntlClientProvider>
+      {children}
+    </NextIntlClientProvider>
+  )
 }

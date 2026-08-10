@@ -6,9 +6,6 @@ import "@/app/index.css"
 // Type
 import type { Metadata } from "next"
 
-// Component
-import { NextIntlClientProvider } from 'next-intl'
-
 // Shadcn Font
 const inter = Inter({
   subsets: ['latin'],
@@ -34,13 +31,11 @@ export const metadata: Metadata = {
 export default function Layout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
+      lang={config.defaultLocale}
       className={cn("h-svh antialiased font-sans", inter.variable)}
     >
       <body className="min-h-svh bg-background text-foreground w-screen">
-        <NextIntlClientProvider>
-          {children}
-        </NextIntlClientProvider>
+        {children}
       </body>
     </html>
   )

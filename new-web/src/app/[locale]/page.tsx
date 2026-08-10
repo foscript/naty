@@ -64,10 +64,10 @@ export default function App() {
         </Section>
 
         <Section className='grid grid-cols-1 sm:grid-cols-2 gap-7.5 md:gap-10 md:px-10 md:w-[90%] lg:w-[80%] mx-auto justify-items-center'>
-          <Image alt='Sample Image' fetchPriority="high" width={1366} height={768} className='rounded-lg sm:rounded-2xl' src='https://placehold.co/1366x768/gray/white' />
-          <Image alt='Sample Image' fetchPriority="high" width={1366} height={768} className='rounded-lg sm:rounded-2xl' src='https://placehold.co/1366x768/gray/white' />
-          <Image alt='Sample Image' fetchPriority="high" width={1366} height={768} className='rounded-lg sm:rounded-2xl' src='https://placehold.co/1366x768/gray/white' />
-          <Image alt='Sample Image' fetchPriority="high" width={1366} height={768} className='rounded-lg sm:rounded-2xl' src='https://placehold.co/1366x768/gray/white' />
+          <Image alt='Sample Image' loading='eager' width={1366} height={768} className='rounded-lg sm:rounded-2xl' src='https://placehold.co/1366x768/gray/white' />
+          <Image alt='Sample Image' loading='eager' width={1366} height={768} className='rounded-lg sm:rounded-2xl' src='https://placehold.co/1366x768/gray/white' />
+          <Image alt='Sample Image' loading='eager' width={1366} height={768} className='rounded-lg sm:rounded-2xl' src='https://placehold.co/1366x768/gray/white' />
+          <Image alt='Sample Image' loading='eager' width={1366} height={768} className='rounded-lg sm:rounded-2xl' src='https://placehold.co/1366x768/gray/white' />
         </Section>
       </main>
 
