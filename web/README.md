@@ -22,7 +22,7 @@ A modern introductory website.
 <br>
 
 ## What is this?
-This is the webpage for Project Naty.
+This is the web page for Project Naty.
 
 We have achieved a simple, stylish finish for both the design and the code.
 

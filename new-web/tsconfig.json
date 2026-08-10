@@ -18,17 +18,24 @@
         "name": "next"
       }
     ],
+
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+
+    // This option was added to load `env.ts` into `next-sitemap.config.ts`.
+    "allowImportingTsExtensions": true
   },
+
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
+    "**/*.mts",
+    "next-sitemap.config.ts"
   ],
+  
   "exclude": ["node_modules"]
 }
