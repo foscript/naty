@@ -1,15 +1,15 @@
 import type { IConfig } from 'next-sitemap'
-import { env } from './src/lib/env.ts'
+import { config as projectConfig } from './src/lib/config.ts'
 
 const config: IConfig = {
-  siteUrl: process.env.NEXT_PUBLIC_BASE_URL || 'https://example.com',
+  siteUrl: projectConfig.baseURL,
   generateRobotsTxt: true,
   outDir: 'out',
   changefreq: 'weekly',
   priority: 0.5,
 
   transform: async (config, path) => {
-    const topPath = env.locales.map((locale) => {
+    const topPath = projectConfig.locales.map((locale) => {
       return `/${locale}`
     })
 

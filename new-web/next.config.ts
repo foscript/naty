@@ -6,7 +6,12 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts')
 const config: NextConfig = {
   reactCompiler: true,
   output: 'export',
-  reactStrictMode: true
+  reactStrictMode: true,
+  typedRoutes: true,
+
+  images: {
+    unoptimized: true
+  }
 }
 
 export default withNextIntl(config)

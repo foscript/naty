@@ -1,5 +1,22 @@
 {
   "metaData": {
     "description": "最も使いやすいテンプレートエコシステム"
+  },
+
+  "page": {
+    "index": {
+      "section": {
+        "title": "<span>最も使いやすい</span>テンプレートエコシステム",
+        "description": "ゼロから始める必要はありません。豊富なテンプレートの中から、あなたのニーズにぴったりのものを見つけましょう！",
+        "gettingStarted": "始める",
+        "seeTemplates": "テンプレートを見る"
+      }
+    }
+  },
+
+  "component": {
+    "header": {
+      "searchTemplates": "テンプレートを探す"
+    }
   }
 }

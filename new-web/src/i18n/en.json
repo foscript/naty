@@ -1,5 +1,22 @@
 {
   "metaData": {
     "description": "The easiest-to-use template ecosystem"
+  },
+
+  "page": {
+    "index": {
+      "section": {
+        "title": "The <span>easiest-to-use</span> template ecosystem",
+        "description": "No need to start from scratch. Let’s browse our diverse template options and find the perfect one for your needs!",
+        "gettingStarted": "Getting Started",
+        "seeTemplates": "See Templates"
+      }
+    }
+  },
+
+  "component": {
+      "header": {
+        "searchTemplates": "Search"
+      }
   }
 }

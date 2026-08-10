@@ -1,12 +1,14 @@
 'use client'
 
+import { config } from '@/lib/config'
+
+// Hooks
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { env } from '@/lib/env'
 
 export default function App() {
   const router = useRouter()
-  const { defaultLocale, locales } = env
+  const { defaultLocale, locales } = config
 
   useEffect(() => {
     const userLocale = navigator.language.split("-")[0]

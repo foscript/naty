@@ -119,10 +119,17 @@
 
 @layer base {
   * {
-    @apply outline-ring/50;
+    @apply outline-ring/50 border-border;
   }
 
   button:not(:disabled), [role="button"]:not(:disabled) {
     cursor: pointer;
+  }
+}
+
+/* Original Options */
+@layer base {
+  * {
+    @apply delay-75 transition-all duration-75 ease-in-out selection:bg-foreground selection:text-background;
   }
 }

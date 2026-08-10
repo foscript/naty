@@ -1,10 +1,12 @@
-import type { Metadata } from "next"
 import { getTranslations } from "next-intl/server"
 import { redirect } from 'next/navigation'
-import { env } from '@/lib/env'
+import { config } from '@/lib/config'
+
+// Type
+import type { Metadata } from "next"
 
 export async function generateStaticParams() {
-  return env.locales.map((locale) => ({ locale }))
+  return config.locales.map((locale) => ({ locale }))
 }
 
 export async function generateMetadata({ params }: LayoutProps<'/[locale]'>): Promise<Metadata> {
@@ -18,7 +20,7 @@ export async function generateMetadata({ params }: LayoutProps<'/[locale]'>): Pr
 
 export default async function Layout({ children, params }: LayoutProps<"/[locale]">) {
   const { locale } = await params
-  const { locales, defaultLocale } = env
+  const { locales, defaultLocale } = config
 
   if (!locales.includes(locale)) {
     redirect(`/${defaultLocale}`)

@@ -1,8 +1,13 @@
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { config } from "@/lib/config"
 import { cn } from "@/lib/shadcn/utils"
-import { env } from "@/lib/env"
+import { Inter } from "next/font/google"
 import "@/app/index.css"
+
+// Type
+import type { Metadata } from "next"
+
+// Component
+import { NextIntlClientProvider } from 'next-intl'
 
 // Shadcn Font
 const inter = Inter({
@@ -11,17 +16,32 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: env.name,
-  description: 'The easiest-to-use template ecosystem'
+  description: 'The easiest-to-use template ecosystem',
+
+  title: {
+    default: config.appName,
+    template: `%s | ${config.appName}`
+  },
+
+  alternates: {
+    languages: {
+      ja: '/ja',
+      en: '/en'
+    }
+  }
 }
 
 export default function Layout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={cn("h-full antialiased font-sans", inter.variable)}
+      className={cn("h-svh antialiased font-sans", inter.variable)}
     >
-      <body className="min-h-screen bg-background text-foreground w-screen">{children}</body>
+      <body className="min-h-svh bg-background text-foreground w-screen">
+        <NextIntlClientProvider>
+          {children}
+        </NextIntlClientProvider>
+      </body>
     </html>
   )
 }
