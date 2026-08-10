@@ -5,4 +5,4 @@ dist/
 .tanstack/
 
 # Secret
-.env
+.env*

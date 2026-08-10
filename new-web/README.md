@@ -31,8 +31,8 @@ We have achieved a simple, stylish finish for both the design and the code.
 - Vite
 - Tailwind CSS
 - Shadcn UI
-- Cloudflare Workers
+- Cloudflare Pages
 - Tanstack Router
-- Tanstack Start
 - TypeScript
 - MDX
+- Next.js

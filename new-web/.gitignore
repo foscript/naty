@@ -1,8 +1,8 @@
 # Unnecessary
 node_modules/
-dist/
-.tanstack/
-.wrangler/
+.next/
+out/
+next-env.d.ts
 
 # Secret
-.env
+.env*
