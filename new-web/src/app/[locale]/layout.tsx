@@ -1,5 +1,4 @@
 import { getTranslations } from "next-intl/server"
-import { redirect } from 'next/navigation'
 import { config } from '@/lib/config'
 
 // Type
@@ -23,11 +22,6 @@ export async function generateMetadata({ params }: LayoutProps<'/[locale]'>): Pr
 
 export default async function Layout({ children, params }: LayoutProps<"/[locale]">) {
   const { locale } = await params
-  const { locales, defaultLocale } = config
-
-  if (!locales.includes(locale)) {
-    redirect(`/${defaultLocale}`)
-  }
 
   return (
     <NextIntlClientProvider>
