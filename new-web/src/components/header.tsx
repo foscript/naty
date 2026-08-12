@@ -5,7 +5,7 @@ import { config } from '@/lib/config'
 import { buttonVariants } from '@/components/shadcn/ui/button'
 
 // Component
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import { FaGithub } from 'react-icons/fa'
 import { EllipsisVertical, X, Search } from 'lucide-react'
 

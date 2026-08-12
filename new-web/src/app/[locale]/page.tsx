@@ -3,7 +3,7 @@ import { buttonVariants } from '@/components/shadcn/ui/button'
 import { getTranslations } from 'next-intl/server'
 
 // Components
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import Image from 'next/image'
 import { Book } from 'lucide-react'
 import { Header } from '@/components/header'
