@@ -24,7 +24,11 @@
     },
 
     // This option was added to load `env.ts` into `next-sitemap.config.ts`.
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+
+    // Original Options
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   },
 
   "include": [

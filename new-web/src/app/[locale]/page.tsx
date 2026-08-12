@@ -1,8 +1,6 @@
 import { cn } from '@/lib/shadcn/utils'
 import { buttonVariants } from '@/components/shadcn/ui/button'
-
-// Hooks
-import { useTranslations } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 
 // Components
 import Link from 'next/link'
@@ -23,11 +21,12 @@ function Section({ children, className, screen }: { children: React.ReactNode; c
   )
 }
 
-export default function App() {
-  const t = useTranslations('page.index')
+export default async function App({ params }: PageProps<'/[locale]'>) {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'page.index' })
 
   return (
-    <div>
+    <>
       <Header />
 
       <main className='flex flex-col gap-20 sm:gap-25 py-20 sm:py-25'>
@@ -72,6 +71,6 @@ export default function App() {
       </main>
 
       <Footer smart />
-    </div>
+    </>
   )
 }

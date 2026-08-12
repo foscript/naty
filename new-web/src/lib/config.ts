@@ -1,6 +1,9 @@
-import { type IconType } from 'react-icons/lib'
+// Icon Component
 import { FaGithub, FaInstagram } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
+
+// Type
+import { type IconType } from 'react-icons/lib'
 
 type Config = {
   appName: string,

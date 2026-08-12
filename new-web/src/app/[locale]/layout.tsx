@@ -1,19 +1,18 @@
-import { getTranslations } from "next-intl/server"
-import { config } from '@/lib/config'
-
-// Type
-import type { Metadata } from "next"
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server"
+import { routing } from '@/i18n/navigation'
 
 // Component
 import { NextIntlClientProvider } from 'next-intl'
 
+// Type
+import type { Metadata } from "next"
+
 export async function generateStaticParams() {
-  return config.locales.map((locale) => ({ locale }))
+  return routing.locales.map((locale) => ({ locale }))
 }
 
-export async function generateMetadata({ params }: LayoutProps<'/[locale]'>): Promise<Metadata> {
-  const { locale } = await params
-  const t = await getTranslations({ locale, namespace: "metaData" })
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('metadata')
 
   return {
     description: t('description')
@@ -21,10 +20,14 @@ export async function generateMetadata({ params }: LayoutProps<'/[locale]'>): Pr
 }
 
 export default async function Layout({ children, params }: LayoutProps<"/[locale]">) {
-  const { locale } = await params
+  let { locale } = await params
+  
+  // Due to various factors, you need to use this function to get a smooth experience with `next-intl` in SSG mode.
+  setRequestLocale(locale)
+  const messages = await getMessages()
 
   return (
-    <NextIntlClientProvider>
+    <NextIntlClientProvider messages={messages}>
       {children}
     </NextIntlClientProvider>
   )

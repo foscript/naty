@@ -16,6 +16,4 @@ export default function App() {
 
     router.replace(`/${targetLocale}`)
   }, [router])
-
-  return null
 }

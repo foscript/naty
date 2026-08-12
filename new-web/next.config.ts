@@ -5,10 +5,11 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts')
 
 const config: NextConfig = {
   reactCompiler: true,
-  output: 'export',
   reactStrictMode: true,
   typedRoutes: true,
 
+  // SSG Settings
+  output: 'export',
   images: {
     unoptimized: true
   }

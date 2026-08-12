@@ -1,5 +1,5 @@
 {
-  "metaData": {
+  "metadata": {
     "description": "最も使いやすいテンプレートエコシステム"
   },
 
@@ -16,7 +16,7 @@
 
   "component": {
     "header": {
-      "searchTemplates": "テンプレートを探す"
+      "searchTemplates": "探す"
     }
   }
 }

@@ -4,18 +4,18 @@ import { cn } from '@/lib/shadcn/utils'
 import { config } from '@/lib/config'
 import { buttonVariants } from '@/components/shadcn/ui/button'
 
-// Type
-import type { Route } from 'next'
-
-// Hook
-import { useState, useEffect } from 'react'
-import { useTranslations } from 'next-intl'
-
 // Component
 import Link from 'next/link'
 import { FaGithub } from 'react-icons/fa'
 import { EllipsisVertical, X, Search } from 'lucide-react'
+
+// Hook
+import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
+
+// Type
+import type { Route } from 'next'
 
 function NavLink({ link, label, children, className }: { link: Route, label: string, children: React.ReactNode, className?: string }) {
   const pathname = usePathname()

@@ -130,6 +130,7 @@
 /* Original Options */
 @layer base {
   * {
-    @apply delay-75 transition-all duration-75 ease-in-out selection:bg-foreground selection:text-background;
+    @apply transition-all ease-in-out delay-75 duration-75;
+    @apply selection:bg-foreground selection:text-background;
   }
 }

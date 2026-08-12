@@ -8,15 +8,16 @@ const config: IConfig = {
   changefreq: 'weekly',
   priority: 0.5,
 
-  transform: async (config, path) => {
+  transform: async (_config, path) => {
     const topPath = projectConfig.locales.map((locale) => {
       return `/${locale}`
     })
 
+    // Confirm language page
     if (topPath.includes(path)) {
       return {
         loc: path,
-        priority: 1.0
+        priority: 1
       }
     }
   }
