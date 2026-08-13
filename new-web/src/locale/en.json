@@ -11,6 +11,10 @@
         "gettingStarted": "Getting Started",
         "seeTemplates": "See Templates"
       }
+    },
+
+    "notfound": {
+      "message": "Page not found"
     }
   },
 

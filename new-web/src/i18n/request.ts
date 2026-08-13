@@ -1,16 +1,18 @@
 import { getRequestConfig } from 'next-intl/server'
 import { routing } from '@/i18n/navigation'
 import { hasLocale } from 'next-intl'
+import { locale } from 'next/root-params'
 
-export default getRequestConfig(async ({ requestLocale }) => {
-  let locale = await requestLocale
+export default getRequestConfig(async () => {
+  const currentLocale = await locale()
 
-  if (!hasLocale(routing.locales, locale)) {
-    locale = routing.defaultLocale
+  // Check locale is valid
+  if (!hasLocale(routing.locales, currentLocale)) {
+    throw new Error(`Invaild locale(${currentLocale}) is detected.`)
   }
 
   return {
-    locale,
-    messages: (await import(`@/locale/${locale}.json`)).default
+    locale: currentLocale,
+    messages: (await import(`@/locale/${currentLocale}.json`)).default
   }
 })

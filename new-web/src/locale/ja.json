@@ -11,6 +11,10 @@
         "gettingStarted": "始める",
         "seeTemplates": "テンプレートを見る"
       }
+    },
+
+    "notfound": {
+      "message": "ページが見つかりませんでした"
     }
   },
 
