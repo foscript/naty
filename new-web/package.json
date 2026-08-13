@@ -33,5 +33,17 @@
     "tailwindcss": "^4",
     "typescript": "^5",
     "wrangler": "^4.120.0"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": ">=22",
+      "onFail": "warn"
+    },
+    "packageManager": {
+      "name": "pnpm",
+      "version": ">=10",
+      "onFail": "warn"
+    }
   }
 }

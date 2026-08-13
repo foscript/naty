@@ -1,9 +1,5 @@
 import { config } from '@/lib/config'
-
-// Component
-import Link from 'next/link'
-
-// Type
+import { Link } from '@/i18n/navigation'
 import type { IconType } from 'react-icons/lib'
 
 function SNSIcon({ href, icon: Icon }: { href: string, icon: IconType }) {

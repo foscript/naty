@@ -8,7 +8,7 @@ export default getRequestConfig(async () => {
 
   // Check locale is valid
   if (!hasLocale(routing.locales, currentLocale)) {
-    throw new Error(`Invaild locale(${currentLocale}) is detected.`)
+    throw new Error(`Invaild locale(${currentLocale}) is detected. You missed URL.`)
   }
 
   return {

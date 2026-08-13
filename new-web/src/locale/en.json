@@ -10,7 +10,9 @@
         "description": "No need to start from scratch. Let’s browse our diverse template options and find the perfect one for your needs!",
         "gettingStarted": "Getting Started",
         "seeTemplates": "See Templates"
-      }
+      },
+
+      "title":"The easiest-to-use template ecosystem"
     },
 
     "notfound": {

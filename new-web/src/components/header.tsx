@@ -12,12 +12,9 @@ import { EllipsisVertical, X, Search } from 'lucide-react'
 // Hook
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { usePathname } from 'next/navigation'
+import { usePathname } from '@/i18n/navigation'
 
-// Type
-import type { Route } from 'next'
-
-function NavLink({ link, label, children, className }: { link: Route, label: string, children: React.ReactNode, className?: string }) {
+function NavLink({ link, label, children, className }: { link: string, label: string, children: React.ReactNode, className?: string }) {
   const pathname = usePathname()
   const isActive = pathname.startsWith(link)
 
@@ -35,7 +32,7 @@ function NavLink({ link, label, children, className }: { link: Route, label: str
   )
 }
 
-const navLinkMap: { link: Route, label: string }[] = [
+const navLinkMap: { link: string, label: string }[] = [
   { link: '/', label: 'Home' },
   { link: '/', label: 'Docs' },
   { link: '/', label: 'Templates' },
