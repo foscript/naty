@@ -37,13 +37,15 @@
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": ">=22",
       "onFail": "warn"
     },
     "packageManager": {
       "name": "pnpm",
-      "version": ">=10",
       "onFail": "warn"
     }
+  },
+  "engines": {
+    "node": ">=22",
+    "pnpm": ">=10"
   }
 }
