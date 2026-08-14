@@ -23,7 +23,7 @@ export async function generateStaticParams() {
 export async function generateMetadata(): Promise<Metadata> {
   return {
     description: config.defaultDescription,
-    title: config.appName,
+    title: `404 - ${config.appName}`,
 
     alternates: {
       languages: {

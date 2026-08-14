@@ -31,7 +31,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
     title: {
       default: config.appName,
-      template: `%s | ${config.appName}`
+      template: `%s - ${config.appName}`
     },
 
     alternates: {

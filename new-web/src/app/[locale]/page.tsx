@@ -9,17 +9,6 @@ import { Book } from 'lucide-react'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 
-// Type
-import type { Metadata } from 'next'
-
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations('page.index')
-
-  return {
-    title: t('title')
-  }
-}
-
 function Section({ children, className, screen }: { children: React.ReactNode; className?: string, screen?: boolean }) {
   return (
     <section className={cn(
