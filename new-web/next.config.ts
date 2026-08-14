@@ -12,6 +12,11 @@ const config: NextConfig = {
   output: 'export',
   images: {
     unoptimized: true
+  },
+
+  experimental: {
+    // I have enabled this option because root tags such as the html tag cannot be used in the standard not-found.tsx for various reasons.
+    globalNotFound: true
   }
 }
 

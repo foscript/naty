@@ -7,6 +7,7 @@ import { type IconType } from 'react-icons/lib'
 
 type Config = {
   appName: string,
+  defaultDescription: string,
   baseURL: string,
   repositoryURL: string,
   locales: string[],
@@ -20,6 +21,7 @@ type Config = {
 
 export const config: Config = {
   appName: 'Naty',
+  defaultDescription: 'The easiest-to-use template ecosystem',
   baseURL: 'https://naty.foscript.com',
   repositoryURL: 'https://github.com/foscript/naty',
   locales: ['en', 'ja'],
